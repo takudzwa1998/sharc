@@ -8,9 +8,12 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "concurrently": "^5.3.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.10.2",
+    "install": "^0.13.0",
+    "mongoose": "^5.10.4",
     "morgan": "^1.10.0",
+    "prepend-file": "^2.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3"
@@ -18,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "sharc_app": "npm start",
-    "dev": "concurrently -n 'server, client' -c 'blue,green' \"nodemon server.js\" \"npm run sharc_app\"",
+    "dev": "concurrently -n 'server,client' -c 'blue,green' \"nodemon server.js\" \"npm run sharc_app\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -44,5 +47,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "proxy":"http://localhost:8080"
+  "proxy": "http://10.0.0.16:8080"
 }
