@@ -11,12 +11,17 @@ class Buoy_Form extends React.Component{
     param1:'',
     param2:'',
     param3:'',
-    gps_location:''
+    gps_location:'',
+    checkbox_state:false
   };
 
   stateChange=({target})=>{
     const {name, value}=target;
     this.setState({[name]: value});
+  };
+
+  handleCheckBoxChange=()=>{
+    this.setState({checkbox_state:!this.state.checkbox_state});
   };
 
   submit=(event)=>{
@@ -28,7 +33,8 @@ class Buoy_Form extends React.Component{
       param1:this.state.param1,
       param2:this.state.param2,
       param3:this.state.param3,
-      gps_location:this.state.gps_location
+      gps_location:this.state.gps_location,
+      checkbox_state:this.state.checkbox_state
     };
 
     axios({
@@ -105,6 +111,13 @@ class Buoy_Form extends React.Component{
                 placeholder= "GPS Location"
                 value={this.state.gps_location}
                 onChange={this.stateChange}
+              />
+              Also Delete data from this buoy
+              <input
+                type="checkbox"
+                name="checkbox_state"
+                value={this.state.checkbox_state}
+                onChange={this.handleCheckBoxChange}
               />
               </div>
             <button>Submit</button>
