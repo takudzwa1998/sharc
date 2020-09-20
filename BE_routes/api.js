@@ -1,4 +1,4 @@
-require('../BE_buoy_models/CAPITAL_STEEZ');
+
 require('../BE_buoy_models/Buoy_Two');
 const express = require('express');
 const router = new express.Router();

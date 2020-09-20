@@ -122,7 +122,6 @@ class Buoy_Form extends React.Component{
               </div>
             <button>Submit</button>
           </form>
-
       </div>
     );
   }
