@@ -11,6 +11,7 @@ class Buoy_Form extends React.Component{
     param1:'',
     param2:'',
     param3:'',
+    param4:'',
     gps_location:'',
     checkbox_state:false
   };
@@ -33,6 +34,7 @@ class Buoy_Form extends React.Component{
       param1:this.state.param1,
       param2:this.state.param2,
       param3:this.state.param3,
+      param4:this.state.param4,
       gps_location:this.state.gps_location,
       checkbox_state:this.state.checkbox_state
     };
@@ -59,6 +61,7 @@ class Buoy_Form extends React.Component{
       param1:'',
       param2:'',
       param3:'',
+      param4:'',
       gps_location:''
     });
   };
@@ -103,6 +106,13 @@ class Buoy_Form extends React.Component{
                 name="param3"
                 placeholder= "Parameter Three"
                 value={this.state.param3}
+                onChange={this.stateChange}
+              />
+              <input
+                type="text"
+                name="param4"
+                placeholder= "Parameter Four"
+                value={this.state.param4}
                 onChange={this.stateChange}
               />
               <input
