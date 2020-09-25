@@ -10,11 +10,14 @@ const csvFilePath='./SB_03.csv';
 const Path = require('path')
 var MongoClient  = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
+var dwn=0;
 
-//async function to donwload and save
+// function to donwload and save
 function download_Buoy_Data(collection, link){
-
-  const path = Path.resolve(__dirname,'bouy_data_files',collection+'.csv')
+  console.log("Downloadig data phase");
+  const path = Path.join(__dirname,'buoy_data_files',collection+dwn+'.csv')
+  //const demopath = Path.resolve(__dirname,'SB_03.csv')
+  dwn=dwn+1;
 console.log("path: "+ path);
   axios({
     url:link,
@@ -23,11 +26,65 @@ console.log("path: "+ path);
   })
    .then((response)=>{
      response.data.pipe(fs.createWriteStream(path))
-     console.log("data RECEIVED & SAVED");
+    console.log("data RECEIVED & SAVED");
+     //3. Extract the data from the downloaded files and save to db
+     console.log("Extracting data and saving to Mongo Phase")
+     csvtojson().fromFile(csvFilePath)
+   .then((jsonObj)=>{
+     console.log("Extraction Successful")
+     var count = Object.keys(jsonObj).length;
+       for(var i=0;i<count;i++){
+         add_to_database(collection, jsonObj[i])
+     }
+   })
+
    })
    .catch((error)=>{
      console.log(error);
    });;
+
+}
+
+//function to add to databases
+
+function add_to_database(collection, data){
+  var first_load=data.Payload.substring(
+    data.Payload.indexOf("01") + 2,
+    data.Payload.indexOf("d02")
+);
+  var second_load=data.Payload.substring(
+  data.Payload.lastIndexOf("d02") + 3,
+  data.Payload.indexOf("d03")
+);
+  var thrid_load=data.Payload.substring(
+  data.Payload.lastIndexOf("d03") + 3,
+  data.Payload.indexOf("d04")
+);
+  var fourth_load=data.Payload.substring(
+  data.Payload.lastIndexOf("d04") + 3,
+  data.Payload.lastIndexOf("d")
+);
+  const compiled_data={
+  date_time:data["Date Time (UTC)"],
+  direction:data.Direction,
+  gps_location:"None ATM",
+  Temperature:first_load,
+  Humidity:second_load,
+  Pressure:thrid_load,
+  luminous_intensity:fourth_load
+}
+  MongoClient.connect(url,{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+  }, function(err, db) {
+  if (err) throw err;
+    var mydb = db.db("demo_db");
+    mydb.collection("CAPITAL_STEEZ").insertOne(compiled_data, function(err, res) {
+      if (err) throw err;
+      console.log("Data Saved to CAPITAL_STEEZ!!!!");
+      db.close();
+    });
+});
 
 }
 
@@ -53,17 +110,6 @@ mydatabase.collection("buoy_links").find({}).toArray(function(err, result) {
   db.close();
 });
 });
-
-
-
-  console.log("In Extracting data")
-  csvtojson().fromFile(csvFilePath)
-.then((jsonObj)=>{
-  var count = Object.keys(jsonObj).length;
-  /*  for(var i=0;i<count;i++){
-    console.log(jsonObj[i].Payload);
-  }*/
-})
 
 });
 

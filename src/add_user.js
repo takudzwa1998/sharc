@@ -34,7 +34,6 @@ class Add_User extends React.Component{
   };
 
 _onSelect (option) {
-  console.log('You selected ', option.label)
   this.setState({selected: option})
 }
 
@@ -56,12 +55,12 @@ submit=(event)=>{
     };
 
     axios({
-      url:'/add_user/add',
+      url:'add_user/add',
       method:'POST',
       data: load
     })
-     .then(()=>{
-       console.log("data sent");
+     .then((response)=>{
+       console.log(response.data);
        this.resetInputFields();
      })
      .catch(()=>{

@@ -16,7 +16,7 @@ router.post('/add', (req, res)=>{
   // Store hash in your password DB.
   const salt = bcrypt.genSaltSync(saltRounds);
   const hash = bcrypt.hashSync(req.body.password, salt)
-  console.log(hash)
+  var is_saved=false;
 
   if (!req.body.checkbox_state){
     var user_creds={
@@ -44,11 +44,15 @@ router.post('/add', (req, res)=>{
   if (err) throw err;
     var mydb = db.db("users");
     mydb.collection("registered_users").insertOne(user_creds, function(err, res) {
-      if (err) throw err;
+      if (err){is_saved=false;}else{
       console.log("User Entry Saved");
+      is_saved=true;
+    }
       db.close();
     });
 });
+
+  res.status(200).send(is_saved);
 
 
 });

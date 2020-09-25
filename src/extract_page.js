@@ -12,8 +12,9 @@ extract=(event)=>{
     url:'/extract_data/ext',
     method:'POST',
   })
-   .then(()=>{
+   .then((res)=>{
      console.log("data sent");
+     res.end();
    })
    .catch((error)=>{
      console.log(error);
@@ -22,7 +23,10 @@ extract=(event)=>{
 }
 render(){
   return(
+    <div>
     <button onClick={this.extract}>Extract</button>
+    <button >Extract Individually</button>
+    </div>
   );
 }
 
