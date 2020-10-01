@@ -1,4 +1,5 @@
 import axios from "axios";
+import './App.css';
 import React, {Component} from 'react';
 const csvtojson =require("csvtojson");
 const csvFilePath='../SB_03.csv';
@@ -21,11 +22,12 @@ extract=(event)=>{
    });;
 
 }
+
 render(){
   return(
     <div>
-    <button onClick={this.extract}>Extract</button>
-    <button >Extract Individually</button>
+    <button className="popup-button" onClick={this.extract}>Extract</button>
+    <button className="popup-button" >Extract Individually</button>
     </div>
   );
 }

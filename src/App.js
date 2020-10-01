@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Buoy_Form from './buoy_form.js';
 import Add_User from './add_user.js';
@@ -14,6 +13,8 @@ import {
 } from "react-router-dom";
 import ProtectedRoute from "./login_components/ProtectedRoute";
 import Dashboard from "./admin/dashboard.js";
+import Routers from "./admin/routers.js";
+import Buoys from "./admin/admin_pages/buoys.js"
 
 class App extends React.Component{
 
@@ -26,8 +27,8 @@ class App extends React.Component{
         <Admin_Login/>
         </Route>
 
-        <ProtectedRoute path="/dashboard">
-          <Dashboard/>
+        <ProtectedRoute path="/home">
+          <Routers/>
         </ProtectedRoute>
 
       </Router>

@@ -51,10 +51,7 @@ router.post('/add', (req, res)=>{
       db.close();
     });
 });
-
   res.status(200).send(is_saved);
-
-
 });
 
 router.post('/remove', (req, res)=>{

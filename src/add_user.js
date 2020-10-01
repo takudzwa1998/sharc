@@ -4,6 +4,9 @@ import Dropdown_Menu from './dropdown_menu.js';
 import Dropdown from 'react-dropdown';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import TextField from 'material-ui/TextField';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Button from '@material-ui/core/Button';
 
 const options = [
   'Antarctic Legacy','Cape Peninsula University of Technology',
@@ -85,54 +88,56 @@ handleCheckBoxChange=()=>{
   render(){
     const selected_Institution = typeof this.state.selected === 'string' ? this.state.selected : this.state.selected.label
     return(
-      <div className="form-input">
-      <h2>Sample Add User Form</h2>
-          <form onSubmit={this.submit}>
-              <div>
-              <input
-                type="text"
-                name="name"
-                placeholder= "Name"
-                value={this.state.name}
-                onChange={this.stateChange}
-              />
-              <input
-                type="text"
-                name="surname"
-                placeholder= "Surname"
-                value={this.state.surname}
-                onChange={this.stateChange}
-              />
-              <input
-                type="text"
-                name="researcher_id"
-                placeholder= "Researcher ID"
-                value={this.state.researcher_id}
-                onChange={this.stateChange}
-              />
-              <input
-                type="password"
-                name="password"
-                placeholder= "Password"
-                value={this.state.password}
-                secureTextEntry={true}
-                onChange={this.stateChange}
-              />
-              <div className="form-input">
-                <Dropdown options={options} onChange={this._onSelect} placeholder="Select Institution" />
-              </div>
-              No Institution
-              <input
-                type="checkbox"
-                name="checkbox_state"
-                value={this.state.checkbox_state}
-                onChange={this.handleCheckBoxChange}
-              />
-              </div>
-            <button>Add User</button>
-          </form>
-      </div>
-
+      <Popup trigger={<button className="popup-button"> Add New User</button>}
+      modal
+      >
+            <form onSubmit={this.submit}>
+                <div className="form-input">
+                <MuiThemeProvider>
+                <TextField
+                  type="text"
+                  name="name"
+                  placeholder= "Name"
+                  value={this.state.name}
+                  onChange={this.stateChange}
+                />
+                <TextField
+                  type="text"
+                  name="surname"
+                  placeholder= "Surname"
+                  value={this.state.surname}
+                  onChange={this.stateChange}
+                />
+                <TextField
+                  type="text"
+                  name="researcher_id"
+                  placeholder= "Researcher ID"
+                  value={this.state.researcher_id}
+                  onChange={this.stateChange}
+                />
+                <TextField
+                  type="password"
+                  name="password"
+                  placeholder= "Password"
+                  value={this.state.password}
+                  secureTextEntry={true}
+                  onChange={this.stateChange}
+                />
+                <div className="form-input">
+                  <Dropdown options={options} onChange={this._onSelect} placeholder="Select Institution" />
+                </div>
+                No Institution
+                <input
+                  type="checkbox"
+                  name="checkbox_state"
+                  value={this.state.checkbox_state}
+                  onChange={this.handleCheckBoxChange}
+                />
+                </MuiThemeProvider>
+                <button >Add User</button>
+                </div>
+            </form>
+      </Popup>
     );
   }
 }

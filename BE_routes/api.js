@@ -1,8 +1,6 @@
-require('../BE_buoy_models/Buoy_Two');
+require('../BE_buoy_models/sample_buoy');
 const express = require('express');
 const router = new express.Router();
-const Buoy_One = require('../BE_buoy_models/Buoy_One');
-require('../BE_buoy_models/Buoy_One');
 var prependFile = require('prepend-file');
 var fs = require('fs');
 var http = require('http');
@@ -64,10 +62,9 @@ router.post('/save_buoy', (req, res)=>{
     var mydb = db.db("demo_db");
     mydb.collection("buoy_links").insertOne(link_name, function(err, res) {
       if (err) throw err;
-      console.log("Buoy Link and name Saved");
-      db.close();
     });
 });
+res.status(200).send("Buoy Link and name Saved");
 } );
 
 router.post('/remove_buoy', (req,res)=>{

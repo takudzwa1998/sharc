@@ -5,56 +5,40 @@ html, body, #root .App {
   display: flex;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-
-@media all and (min-width: 50px ) {
-  .Login {
-    padding: 100px 500px;
-  }
-
-  .Login form {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-self: auto;
-  }
-}
-
-
-.full-screen{
+.home,
+.reports,
+.products {
   display: flex;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  height: 90vh;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 3rem;
 }
 
-.App-link {
-  color: #61dafb;
+.form-input{
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.popup-button{
+  display:flex;
+  margin-left: auto;
+  justify-content: space-between;
+  padding-right: 10px;
+  padding: 10px 50px;
+}
+
+.popups{
+  justify-content: space-around;
 }

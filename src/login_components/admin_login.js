@@ -63,7 +63,7 @@ submit=(event)=>{
 
   render(){
     if (localStorage.getItem("token")) {
-      return <Redirect to="/dashboard" />;
+      return <Redirect to="/home" />;
     }
     return(
       <div className="Login">

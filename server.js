@@ -18,6 +18,8 @@ const routes = require('./BE_routes/api.js');
 const add_user = require('./BE_routes/add_user_api.js');
 const extract_data = require('./BE_routes/extract_data.js');
 const login_api = require('./BE_routes/login_api.js');
+const fetch_api = require('./BE_routes/fetch_api.js');
+
 const csvFilePath='C:/Users/takudzwa shumbamhini/OneDrive/Documents/FINAL_YEAR/2nd_Semester/EEE4022S/sharc/SB_03.csv';
 //connect to mongo
 
@@ -41,5 +43,6 @@ app.use('/api', routes);
 app.use('/add_user', add_user);
 app.use('/extract_data', extract_data);
 app.use('/access', login_api);
+app.use('/fetch', fetch_api);
 
 app.listen(PORT, console.log(`Server is starting at ${PORT}`))
