@@ -22,6 +22,7 @@ const options = [
 ];
 
 class Add_User extends React.Component{
+  
   constructor(props){
   super(props);
   this._onSelect = this._onSelect.bind(this)
@@ -58,7 +59,7 @@ submit=(event)=>{
     };
 
     axios({
-      url:'add_user/add',
+      url:'/add_user/add',
       method:'POST',
       data: load
     })

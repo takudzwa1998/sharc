@@ -44,7 +44,7 @@ console.log("path: "+ path);
       })
       .on('end',()=>{
         for (var i=0;i<results.length;i++){
-          console.log("Results Are: "+results[i].Batteryoltage);
+          add_to_database(collection, results[i])
         }
       });
 
@@ -71,33 +71,7 @@ console.log("path: "+ path);
 //function to add to databases
 
 function add_to_database(collection, data){
-  /*
-  var first_load=data.Payload.substring(
-    data.Payload.indexOf("01") + 2,
-    data.Payload.indexOf("d02")
-);
-  var second_load=data.Payload.substring(
-  data.Payload.lastIndexOf("d02") + 3,
-  data.Payload.indexOf("d03")
-);
-  var thrid_load=data.Payload.substring(
-  data.Payload.lastIndexOf("d03") + 3,
-  data.Payload.indexOf("d04")
-);
-  var fourth_load=data.Payload.substring(
-  data.Payload.lastIndexOf("d04") + 3,
-  data.Payload.lastIndexOf("d")
-);
-  const compiled_data={
-  date_time:data["Date Time (UTC)"],
-  direction:data.Direction,
-  gps_location:"None ATM",
-  Temperature:first_load,
-  Humidity:second_load,
-  Pressure:thrid_load,
-  luminous_intensity:fourth_load
-}
-*/
+
   MongoClient.connect(url,{
     useNewUrlParser:true,
     useUnifiedTopology:true

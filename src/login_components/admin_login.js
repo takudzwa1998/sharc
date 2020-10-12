@@ -40,20 +40,6 @@ submit=(event)=>{
       console.log(error);
     });
 
-  /*axios({
-    url:'/access/login',
-    method:'POST',
-    data: load
-  })
-   .then((res)=>{
-     console.log("Password is okay");
-     console.log("Response is "+res.response);
-     res.end();
-   })
-   .catch(()=>{
-     console.log("data not sent");
-   });;*/
-
 };
 
   stateChange=({target})=>{

@@ -9,12 +9,18 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect, Link
 } from "react-router-dom";
 import ProtectedRoute from "./login_components/ProtectedRoute";
 import Dashboard from "./admin/dashboard.js";
 import Routers from "./admin/routers.js";
-import Buoys from "./admin/admin_pages/buoys.js"
+import Buoys from "./admin/admin_pages/buoys.js";
+
+import Landing_page from "./public_files/landing_page.js";
+import Location from "./public_files/location.js";
+import Location_middleware from "./public_files/location_middleware.js";
+import Contacts from "./public_files/contacts.js";
+import Stats from "./public_files/stats.js";
 
 class App extends React.Component{
 
@@ -22,7 +28,6 @@ class App extends React.Component{
     return(
       <div>
       <Router>
-
         <Route path='/Admin_Login'>
         <Admin_Login/>
         </Route>
@@ -30,6 +35,18 @@ class App extends React.Component{
         <ProtectedRoute path="/home">
           <Routers/>
         </ProtectedRoute>
+        <nav >
+        <ul className="nav-links">
+        <Link to="/locations" className="nav-links"><li>Locations</li></Link>
+        <Link to="/contact" className="nav-links"><li> Contact</li></Link>
+        <Link to="/stats" className="nav-links"><li>Statistics</li></Link>
+        </ul>
+        </nav>
+        <Switch>
+          <Route path="/locations" component={Location_middleware} />
+          <Route path="/contact" component={Contacts} />
+          <Route path="/stats" component={Stats} />
+        </Switch>
 
       </Router>
       </div>

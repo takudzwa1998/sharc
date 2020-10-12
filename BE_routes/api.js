@@ -81,8 +81,6 @@ router.post('/remove_buoy', (req,res)=>{
   }
 );
 
-  //must also remove collection
-  //doing that later
   if (req.body.checkbox_state){
     MongoClient.connect(url,{
       useNewUrlParser:true,
@@ -96,6 +94,7 @@ router.post('/remove_buoy', (req,res)=>{
       db.close();
     });
 });
+res.status(200).send("Buoy Deleted Nicely");
   }
   else{
     console.log("Collection Not deleted");
