@@ -93,6 +93,23 @@ router.post('/col_data',(req, res)=>{
 
 });
 
+router.post('/view_data',(req, res)=>{
+//console.log("COl name her: "+req.body.name)
+  MongoClient.connect(url,{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+  }, function(err, db) {
+  if (err) throw err;
+  var mydatabase = db.db("demo_db");
+  mydatabase.collection(req.body.name).find({}).toArray(function(err, result) {
+    if (err) throw err;
+    res.send(result)
+    db.close();
+  });
+  });
+
+});
+
 router.get('/buoys', (req, res)=>{
 
   MongoClient.connect(url,{

@@ -1,15 +1,10 @@
-import React,{Component, useState} from 'react';
-import { createBrowserHistory } from 'history';
+import React from 'react';
 import { useHistory } from "react-router-dom";
 import DeckGL from '@deck.gl/react';
-import {LineLayer} from '@deck.gl/layers';
 import {PathLayer} from '@deck.gl/layers';
 import MapGL from 'react-map-gl';
 import '../App.css';
 import {StaticMap} from 'react-map-gl';
-import axios from "axios";
-import { browserHistory } from 'react-router';
-var _ = require('underscore');
 // Set your mapbox access token here
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidGFrdWR6d2ExOTk4IiwiYSI6ImNrZzRoZXFrbjBqcWwyeHBqOTNhYTRuemEifQ.BmDagFwcUWOyVZOY_aSrbw';
 
@@ -24,7 +19,7 @@ const INITIAL_VIEW_STATE = {
 
 // Data to be used by the LineLayer
 const data = [
-  {buoy_name: "steez", sourcePosition: [18.4696163, -33.9471633], targetPosition: [18.46980, -33.947300]}
+  {sourcePosition: [18.4696163, -33.9471633], targetPosition: [18.46980, -33.947300]}
 ];
 
 function Location({data}) {
@@ -54,11 +49,13 @@ function Location({data}) {
         getTooltip={({object}) => object && `Paths Covered`}
       >
       <button className="button" onClick={() => history.push("/")}>Back</button>
-        <StaticMap
-        mapStyle="mapbox://styles/mapbox/dark-v9"
+
+      <StaticMap
+        mapStyle="mapbox://styles/mapbox/light-v9"
         mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
-        />
+      />
       </DeckGL>
+
     );
 
 }

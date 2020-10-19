@@ -1,6 +1,6 @@
-import React,{Component, useState} from 'react';
+import React from 'react';
 import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   ComposedChart, Line
 } from 'recharts';
 import axios from "axios";

@@ -1,7 +1,6 @@
-import React,{Component, useState} from 'react';
-import {VictoryChart, VictoryTheme, VictoryLine, VictoryAxis,
-VictoryScatter, VictoryArea} from 'victory';
-import {BarChart,ComposedChart, Area, Bar, Cell,LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import React from 'react';
+
+import {ComposedChart, Area, Bar, XAxis, YAxis, Tooltip, Legend} from 'recharts';
 import axios from "axios";
 var _ = require('underscore');
 

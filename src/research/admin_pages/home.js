@@ -52,6 +52,7 @@ class Home extends React.Component{
     else{
       console.log("Error: Render Issues!" )
     }
+
     return(
       <h1>Home Page</h1>
     );

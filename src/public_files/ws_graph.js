@@ -1,6 +1,4 @@
-import React,{Component, useState} from 'react';
-import {VictoryChart, VictoryTheme, VictoryLine, VictoryAxis,
-VictoryScatter, VictoryArea} from 'victory';
+import React from 'react';
 import {BarChart, Bar, Cell,LineChart, Line,ComposedChart, Area,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import axios from "axios";

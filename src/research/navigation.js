@@ -1,7 +1,7 @@
-import React,{useState} from 'react';
+import React,{Component, useState} from 'react';
 import * as myIcons from "react-icons/fa";
 import * as myAIIcons from "react-icons/ai";
-import { Redirect, Link } from "react-router-dom"
+import { Redirect, Switch, Route, Link } from "react-router-dom";
 import {Navigation_data} from "./navigation_info.js";
 import {IconContext} from 'react-icons';
 import './navigation.css';
@@ -29,7 +29,7 @@ else{
       <Link to="#" className="menu-bars">
       <myIcons.FaBars onClick={isSidebar}/>
       </Link>
-      <button className="popup-button" onClick={signOut} href="#">
+      <button className="popup-button" onClick={logout,signOut} href="#">
         Sign Out
       </button>
     </div>

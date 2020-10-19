@@ -1,9 +1,8 @@
-import React,{Component, useState} from 'react';
+import React from 'react';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import 'react-notifications/lib/notifications.css';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -23,8 +22,7 @@ import ReactNotifications from 'react-notifications-component';
 import { store } from 'react-notifications-component';
 var _ = require('underscore');
 var buoys_array = []
-
-
+var col_data = []
 
 class Buoy_Form extends React.Component{
 
@@ -41,7 +39,6 @@ class Buoy_Form extends React.Component{
   componentWillMount(){
     axios.get('/fetch/buoys')
      .then( response=>
-       //console.log("Response Data 1: "+response.data[0]["name"])
        this.setState({number_of_buoys:response.data})
      )
      .catch((error)=>{
@@ -82,12 +79,12 @@ class Buoy_Form extends React.Component{
 
     const load ={
       buoy_tag:this.state.buoy_tag,
-      rockblock_link:this.state.rockblock_link,
       param1:this.state.param1,
       param2:this.state.param2,
       param3:this.state.param3,
       param4:this.state.param4,
-      gps_location:this.state.gps_location,
+      param5:this.state.param5,
+      param6:this.state.param6,
       checkbox_state:this.state.checkbox_state
     };
 
@@ -129,7 +126,7 @@ class Buoy_Form extends React.Component{
       data:load
     })
      .then(response=>
-       this.setState({col_data:response.data})
+       console.log("Data saved to local machine")
      )
      .catch(()=>{
        console.log("data not received");
@@ -145,6 +142,23 @@ class Buoy_Form extends React.Component{
          duration: 3000
        }
      })
+  }
+
+  view(col_name){
+    const load={
+      name: col_name
+    }
+    axios({
+      url:'/fetch/view_data',
+      method:'POST',
+      data:load
+    })
+     .then(response=>
+       this.setState({col_data:response.data})
+     )
+     .catch(()=>{
+       console.log("data not received");
+     });;
   }
 
   delete=(event)=>{
@@ -195,240 +209,383 @@ class Buoy_Form extends React.Component{
     });
   };
 
-  createNotification = (type) => {
-    return () => {
-      switch (type) {
-        case 'info':
-          NotificationManager.info('Info message');
-          break;
-        case 'success':
-          NotificationManager.success('Success message', 'Title here');
-          break;
-        case 'warning':
-          NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
-          break;
-        case 'error':
-          NotificationManager.error('Error message', 'Click me!', 5000, () => {
-            alert('callback');
-          });
-          break;
-      }
-    };
-  };
-
   render(){
     buoys_array=this.state.number_of_buoys
+    col_data = this.state.col_data
     if(buoys_array){
-    var headings=["name","Last Logged Location", "Date", "Battery Voltage"];
-      return(
-<div>
-  <Popup trigger={<button className="popup-button">Detach Buoy</button>}
-  modal
-  >
-  <ReactNotifications />
-  <form onSubmit={this.delete} >
-      <div className="form-input">
-      <MuiThemeProvider>
-      <TextField
-        type="text"
-        name="buoy_tag"
-        placeholder= "Bouy Name"
-        value={this.state.buoy_tag}
-        onChange={this.stateChange}
-      />
-      </MuiThemeProvider>
-      Also Delete the data from this buoy
-      <input
-        type="checkbox"
-        name="checkbox_state"
-        value={this.state.checkbox_state}
-        onChange={this.handleCheckBoxChange}
-      />
-      </div>
-    <button>Submit</button>
-  </form>
+      if (localStorage.getItem("token") == "SHMTAK004"){
+        if (col_data){
+            var keys = Object.keys(col_data[1])
+          return(
+            <div>
 
-  </Popup>
-<h2>" "</h2>
-      <Popup trigger={<button className="popup-button"> Attach New Buoy</button>}
-      modal
-      >
-      <ReactNotifications />
-          <form onSubmit={this.submit} >
-              <div className="form-input">
-              <MuiThemeProvider>
-              <TextField
-                type="text"
-                name="buoy_tag"
-                placeholder= "Bouy Name"
-                value={this.state.buoy_tag}
-                onChange={this.stateChange}
-              />
-              <TextField
-                type="text"
-                name="rockblock_link"
-                placeholder= "RockBlock Link"
-                value={this.state.rockblock_link}
-                onChange={this.stateChange}
-              />
-              <TextField
-                type="text"
-                name="param1"
-                placeholder= "Parameter One"
-                value={this.state.param1}
-                onChange={this.stateChange}
-              />
-              <TextField
-                type="text"
-                name="param2"
-                placeholder= "Parameter Two"
-                value={this.state.param2}
-                onChange={this.stateChange}
-              />
-              <TextField
-                type="text"
-                name="param3"
-                placeholder= "Parameter Three"
-                value={this.state.param3}
-                onChange={this.stateChange}
-              />
-              <TextField
-                type="text"
-                name="param4"
-                placeholder= "Parameter Four"
-                value={this.state.param4}
-                onChange={this.stateChange}
-              />
-              <TextField
-                type="text"
-                name="gps_location"
-                placeholder= "GPS Location"
-                value={this.state.gps_location}
-                onChange={this.stateChange}
-              />
-              </MuiThemeProvider>
-              </div>
-            <button>Submit</button>
-          </form>
-      </Popup>
-      <Tabs>
-        <TabList>
-        {_.range(0, buoys_array.length, 1).map(value=>
-            <Tab>{buoys_array[value]["name"]}</Tab>
-        )}
+              <Popup trigger={<button className="popup-button">Detach Buoy</button>}
+              modal
+              >
+              <ReactNotifications />
+              <form onSubmit={this.delete} >
+                  <div className="form-input">
+                  <MuiThemeProvider>
+                  <TextField
+                    type="text"
+                    name="buoy_tag"
+                    placeholder= "Bouy Name"
+                    value={this.state.buoy_tag}
+                    onChange={this.stateChange}
+                  />
+                  </MuiThemeProvider>
+                  Also Delete the data from this buoy
+                  <input
+                    type="checkbox"
+                    name="checkbox_state"
+                    value={this.state.checkbox_state}
+                    onChange={this.handleCheckBoxChange}
+                  />
+                  </div>
+                <button>Submit</button>
+              </form>
 
-        </TabList>
+              </Popup>
 
-          {_.range(0,  buoys_array.length, 1).map(value=>
-            <TabPanel>
+              <Popup trigger={<button className="popup-button"> Attach New Buoy</button>}
+                  modal
+                  >
+                  <ReactNotifications />
+                      <form onSubmit={this.submit} >
+                          <div className="form-input">
+                          <MuiThemeProvider>
+                          <TextField
+                            type="text"
+                            name="buoy_tag"
+                            placeholder= "Bouy Name"
+                            value={this.state.buoy_tag}
+                            onChange={this.stateChange}
+                          />
+                          <TextField
+                            type="text"
+                            name="buoy_link"
+                            placeholder= "Rokblock Link"
+                            value={this.state.rockblock_link}
+                            onChange={this.stateChange}
+                          />
+                          <TextField
+                            type="text"
+                            name="param1"
+                            placeholder= "Parameter One"
+                            value={this.state.param1}
+                            onChange={this.stateChange}
+                          />
+                          <TextField
+                            type="text"
+                            name="param2"
+                            placeholder= "Parameter Two"
+                            value={this.state.param2}
+                            onChange={this.stateChange}
+                          />
+                          <TextField
+                            type="text"
+                            name="param3"
+                            placeholder= "Parameter Three"
+                            value={this.state.param3}
+                            onChange={this.stateChange}
+                          />
+                          <TextField
+                            type="text"
+                            name="param4"
+                            placeholder= "Parameter Four"
+                            value={this.state.param4}
+                            onChange={this.stateChange}
+                          />
+                          <TextField
+                            type="text"
+                            name="param5"
+                            placeholder= "Parameter Five"
+                            value={this.state.param5}
+                            onChange={this.stateChange}
+                          />
+                          <TextField
+                            type="text"
+                            name="param6"
+                            placeholder= "Parameter Six"
+                            value={this.state.param6}
+                            onChange={this.stateChange}
+                          />
+                          </MuiThemeProvider>
+                          </div>
+                        <button>Submit</button>
+                      </form>
+              </Popup>
+
+                  <Tabs>
+                    <TabList>
+                    {_.range(0, buoys_array.length, 1).map(value=>
+                        <Tab>{buoys_array[value]["name"]}</Tab>
+                    )}
+
+                    </TabList>
+
+                      {_.range(0,  buoys_array.length, 1).map(value=>
+                        <TabPanel>
+                        <ReactNotifications />
+                        <button onClick={ ()=>{this.take_data(buoys_array[value]["name"]);} }>Download Data</button>
+                        <button onClick={()=>{this.view(buoys_array[value]["name"]);}}>View Data</button>
+                        </TabPanel>
+                      )}
+
+                  </Tabs>
+
+                  <TableContainer style={{ width: 1300}} component={Paper}>
+                  <Table style={{ width: 1300 }} aria-label="simple table">
+
+                  <TableHead>
+                  <TableRow>
+                  {_.range(1, keys.length, 1).map( value =>
+                    <TableCell align="right">{keys[value]}</TableCell>
+                  )}
+                   </TableRow>
+                  </TableHead>
+
+                  <TableBody>
+                  {_.range(0, col_data.length, 1).map( value =>
+                    <TableRow>
+                    <TableCell align="right">{col_data[value][keys[1]]}</TableCell>
+                    <TableCell align="right">{col_data[value][keys[2]]}</TableCell>
+                    <TableCell align="right">{col_data[value][keys[3]]}</TableCell>
+                    <TableCell align="right">{col_data[value][keys[4]]}</TableCell>
+                    <TableCell align="right">{col_data[value][keys[5]]}</TableCell>
+                    <TableCell align="right">{col_data[value][keys[6]]}</TableCell>
+                    <TableCell align="right">{col_data[value][keys[7]]}</TableCell>
+                    <TableCell align="right">{col_data[value][keys[8]]}</TableCell>
+                    <TableCell align="right">{col_data[value][keys[9]]}</TableCell>
+                    </TableRow>
+                  )}
+                  </TableBody>
+
+                  </Table>
+                  </TableContainer>
+
+            </div>
+        );
+        }
+        else{
+          return(
+          <div>
+
+            <Popup trigger={<button className="popup-button">Detach Buoy</button>}
+            modal
+            >
             <ReactNotifications />
-            <button onClick={ ()=>{this.take_data(buoys_array[value]["name"]);} }>Download Data</button>
-            </TabPanel>
-          )}
+            <form onSubmit={this.delete} >
+                <div className="form-input">
+                <MuiThemeProvider>
+                <TextField
+                  type="text"
+                  name="buoy_tag"
+                  placeholder= "Bouy Name"
+                  value={this.state.buoy_tag}
+                  onChange={this.stateChange}
+                />
+                </MuiThemeProvider>
+                Also Delete the data from this buoy
+                <input
+                  type="checkbox"
+                  name="checkbox_state"
+                  value={this.state.checkbox_state}
+                  onChange={this.handleCheckBoxChange}
+                />
+                </div>
+              <button>Submit</button>
+            </form>
 
-      </Tabs>
+            </Popup>
 
-</div>
+            <Popup trigger={<button className="popup-button"> Attach New Buoy</button>}
+                modal
+                >
+                <ReactNotifications />
+                    <form onSubmit={this.submit} >
+                        <div className="form-input">
+                        <MuiThemeProvider>
+                        <TextField
+                          type="text"
+                          name="buoy_tag"
+                          placeholder= "Bouy Name"
+                          value={this.state.buoy_tag}
+                          onChange={this.stateChange}
+                        />
+                        <TextField
+                          type="text"
+                          name="buoy_link"
+                          placeholder= "Rokblock Link"
+                          value={this.state.rockblock_link}
+                          onChange={this.stateChange}
+                        />
+                        <TextField
+                          type="text"
+                          name="param1"
+                          placeholder= "Parameter One"
+                          value={this.state.param1}
+                          onChange={this.stateChange}
+                        />
+                        <TextField
+                          type="text"
+                          name="param2"
+                          placeholder= "Parameter Two"
+                          value={this.state.param2}
+                          onChange={this.stateChange}
+                        />
+                        <TextField
+                          type="text"
+                          name="param3"
+                          placeholder= "Parameter Three"
+                          value={this.state.param3}
+                          onChange={this.stateChange}
+                        />
+                        <TextField
+                          type="text"
+                          name="param4"
+                          placeholder= "Parameter Four"
+                          value={this.state.param4}
+                          onChange={this.stateChange}
+                        />
+                        <TextField
+                          type="text"
+                          name="param5"
+                          placeholder= "Parameter Five"
+                          value={this.state.param5}
+                          onChange={this.stateChange}
+                        />
+                        <TextField
+                          type="text"
+                          name="param6"
+                          placeholder= "Parameter Six"
+                          value={this.state.param6}
+                          onChange={this.stateChange}
+                        />
+                        </MuiThemeProvider>
+                        </div>
+                      <button>Submit</button>
+                    </form>
+            </Popup>
+
+                <Tabs>
+                  <TabList>
+                  {_.range(0, buoys_array.length, 1).map(value=>
+                      <Tab>{buoys_array[value]["name"]}</Tab>
+                  )}
+
+                  </TabList>
+
+                    {_.range(0,  buoys_array.length, 1).map(value=>
+                      <TabPanel>
+                      <ReactNotifications />
+                      <button onClick={ ()=>{this.take_data(buoys_array[value]["name"]);} }>Download Data</button>
+                      <button onClick={()=>{this.view(buoys_array[value]["name"]);}}>View Data</button>
+                      </TabPanel>
+                    )}
+
+                </Tabs>
+
+          </div>
+      );
+        }
+      }
+
+      else{
+        if (col_data){
+          var keys = Object.keys(col_data[1])
+          return(
+              <div>
+
+              <Tabs>
+                <TabList>
+                {_.range(0, buoys_array.length, 1).map(value=>
+                    <Tab>{buoys_array[value]["name"]}</Tab>
+                )}
+
+                </TabList>
+
+                  {_.range(0,  buoys_array.length, 1).map(value=>
+                    <TabPanel>
+                    <ReactNotifications />
+                    <button onClick={ ()=>{this.take_data(buoys_array[value]["name"]);} }>Download Data</button>
+                    <button onClick={()=>{this.view(buoys_array[value]["name"]);}}>View Data</button>
+                    </TabPanel>
+                  )}
+
+              </Tabs>
+
+              <TableContainer style={{ width: 1300}} component={Paper}>
+              <Table style={{ width: 1300 }} aria-label="simple table">
+
+              <TableHead>
+              <TableRow>
+              {_.range(1, keys.length, 1).map( value =>
+                <TableCell align="right">{keys[value]}</TableCell>
+              )}
+               </TableRow>
+              </TableHead>
+
+              <TableBody>
+              {_.range(0, col_data.length, 1).map( value =>
+                <TableRow>
+                <TableCell align="right">{col_data[value][keys[1]]}</TableCell>
+                <TableCell align="right">{col_data[value][keys[2]]}</TableCell>
+                <TableCell align="right">{col_data[value][keys[3]]}</TableCell>
+                <TableCell align="right">{col_data[value][keys[4]]}</TableCell>
+                <TableCell align="right">{col_data[value][keys[5]]}</TableCell>
+                <TableCell align="right">{col_data[value][keys[6]]}</TableCell>
+                <TableCell align="right">{col_data[value][keys[7]]}</TableCell>
+                <TableCell align="right">{col_data[value][keys[8]]}</TableCell>
+                <TableCell align="right">{col_data[value][keys[9]]}</TableCell>
+                </TableRow>
+              )}
+              </TableBody>
+
+              </Table>
+              </TableContainer>
+
+              </div>
+          );
+        }
+        else{
+          return(
+          <div>
+                <Tabs>
+                  <TabList>
+                  {_.range(0, buoys_array.length, 1).map(value=>
+                      <Tab>{buoys_array[value]["name"]}</Tab>
+                  )}
+
+                  </TabList>
+
+                    {_.range(0,  buoys_array.length, 1).map(value=>
+                      <TabPanel>
+                      <ReactNotifications />
+                      <button onClick={ ()=>{this.take_data(buoys_array[value]["name"]);} }>Download Data</button>
+                      <button onClick={()=>{this.view(buoys_array[value]["name"]);}}>View Data</button>
+                      </TabPanel>
+                    )}
+
+                </Tabs>
+
+          </div>
+      );
+        }
+      }
+
+    }
+
+    else{
+    console.log("Error: Render Asynchronous React JS Issue! Reload Page.");
+    return(
+      <div>
+          <h2>Error: Render Asynchronous React JS Issue! Reload Page.</h2>
+      </div>
     );
   }
-  else{
-    console.log("Render Issues!!!!!!!");
-    return(
-<div>
-<Popup trigger={<button className="popup-button">Detach Buoy</button>}
-modal
->
-<ReactNotifications />
-<form onSubmit={this.delete} >
-    <div className="form-input">
-    <MuiThemeProvider>
-    <TextField
-      type="text"
-      name="buoy_tag"
-      placeholder= "Bouy Name"
-      value={this.state.buoy_tag}
-      onChange={this.stateChange}
-    />
-    </MuiThemeProvider>
-    Also Delete the data from this buoy
-    <input
-      type="checkbox"
-      name="checkbox_state"
-      value={this.state.checkbox_state}
-      onChange={this.handleCheckBoxChange}
-    />
-    </div>
-  <button>Submit</button>
-</form>
 
-</Popup>
-<h2>" "</h2>
-    <Popup trigger={<button className="popup-button"> Attach New Buoy</button>}
-    modal
-    >
-    <ReactNotifications />
-        <form onSubmit={this.submit} >
-            <div className="form-input">
-            <MuiThemeProvider>
-            <TextField
-              type="text"
-              name="buoy_tag"
-              placeholder= "Bouy Name"
-              value={this.state.buoy_tag}
-              onChange={this.stateChange}
-            />
-            <TextField
-              type="text"
-              name="rockblock_link"
-              placeholder= "RockBlock Link"
-              value={this.state.rockblock_link}
-              onChange={this.stateChange}
-            />
-            <TextField
-              type="text"
-              name="param1"
-              placeholder= "Parameter One"
-              value={this.state.param1}
-              onChange={this.stateChange}
-            />
-            <TextField
-              type="text"
-              name="param2"
-              placeholder= "Parameter Two"
-              value={this.state.param2}
-              onChange={this.stateChange}
-            />
-            <TextField
-              type="text"
-              name="param3"
-              placeholder= "Parameter Three"
-              value={this.state.param3}
-              onChange={this.stateChange}
-            />
-            <TextField
-              type="text"
-              name="param4"
-              placeholder= "Parameter Four"
-              value={this.state.param4}
-              onChange={this.stateChange}
-            />
-            <TextField
-              type="text"
-              name="gps_location"
-              placeholder= "GPS Location"
-              value={this.state.gps_location}
-              onChange={this.stateChange}
-            />
-            </MuiThemeProvider>
-            </div>
-          <button>Submit</button>
-        </form>
-    </Popup>
-</div>
-  );
   }
-}
-
 
 }
 

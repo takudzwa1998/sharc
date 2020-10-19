@@ -1,17 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../App.css';
 import axios from "axios";
-import background_image from '../images/image_background.jpg';
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import { useHistory } from 'react-router-dom';
 import { Redirect } from "react-router-dom";
 
 class Admin_Login extends React.Component{
-  constructor(props){
+
+constructor(props){
   super(props);
 }
 
-  state={
+state={
     password:'',
     rid:'',
     isLogged: false
@@ -31,7 +29,7 @@ submit=(event)=>{
     console.log("Where is the data "+res.data);
     if (res.data == true){
       console.log("Login Success");
-      localStorage.setItem("token", "T");
+      localStorage.setItem("token", this.state.rid);
       this.setState({islogged: true});
     }
   }
@@ -42,12 +40,12 @@ submit=(event)=>{
 
 };
 
-  stateChange=({target})=>{
+stateChange=({target})=>{
     const {name, value}=target;
     this.setState({[name]: value});
   };
 
-  render(){
+render(){
     if (localStorage.getItem("token")) {
       return <Redirect to="/home" />;
     }
@@ -75,7 +73,6 @@ submit=(event)=>{
 
     );
   }
-
 
 }
 

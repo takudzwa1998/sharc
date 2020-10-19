@@ -22,6 +22,9 @@ html, body, #root .App {
   -webkit-appearance: none;
   justify-content: space-around;
   flex-grow: 4;
+  font: bold 14px Arial;
+  padding-right: 10px;
+  padding: 10px 50px;
 }
 
 .home,
@@ -47,8 +50,54 @@ html, body, #root .App {
   justify-content: space-between;
   padding-right: 10px;
   padding: 10px 50px;
+  display: inline-block;
+  font: bold 14px Arial;
+}
+
+.link-text{
+  text-align: left;
+}
+
+.ul{
+    display: inline-block;
+}
+
+.ul-li{
+    display: inline-block;
+    padding: 20px 20px;
+    width: 341px;
+    text-align:center;
+    cursor:pointer;
+    background-color:#f6f6f6;
+    text-decoration: none;
+    font-family: monospace;
+    color:#000000;
+    transition:0.3s;
+    font: bold 14px Arial;
+}
+
+ul li:hover {
+    background-color:#beecea;
+}
+
+ul li.active {
+    background-color:#41c7c2;
 }
 
 .popups{
   justify-content: space-around;
+}
+
+.root{
+    flex-grow: 1;
+  }
+
+.paper{
+    text-align: left;
+    padding: 30px 30px;
+  }
+
+.scale-header{
+  text-align: left;
+  padding: 20px;
 }

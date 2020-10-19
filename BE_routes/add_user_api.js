@@ -62,10 +62,10 @@ router.post('/remove', (req, res)=>{
   } ,function(err, db) {
     if (err) throw err;
     var mydb = db.db("users");
-    var myquery = { name: req.body.name, surname:req.body.surname, institution:req.body.institution, rid:req.body.researcher_id};
+    var myquery = {rid:req.body.researcher_id};
     mydb.collection("registered_users").deleteOne(myquery, function(err, obj) {
       if (err) throw err;
-      console.log("User "+req.body.name+" "+ req.body.surname+" removed.");
+      console.log("User "+req.body.researcher_id+" removed.");
       db.close();
     });
   });

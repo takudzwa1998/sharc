@@ -1,17 +1,13 @@
-import React,{Component, useState} from 'react';
-
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import React from 'react';
+import '../App.css';
 import 'react-tabs/style/react-tabs.css';
 import 'react-notifications/lib/notifications.css';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import Location from "./location.js";
 import axios from "axios";
 var _ = require('underscore');
 var buoys_array = []
 var tracker_data = null
-
-const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidGFrdWR6d2ExOTk4IiwiYSI6ImNrZzRoZXFrbjBqcWwyeHBqOTNhYTRuemEifQ.BmDagFwcUWOyVZOY_aSrbw';
 
 const data = [
   {sourcePosition: [18.4696163, -33.9471633], targetPosition: [18.4739513, -33.953786]}
@@ -29,10 +25,9 @@ class Location_middleware extends React.Component{
     }
   }
 
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     axios.get('/fetch/buoys')
      .then( response=>
-       //console.log("Response Data 1: "+response.data[0]["name"])
        this.setState({number_of_buoys:response.data})
      )
      .catch((error)=>{
@@ -61,8 +56,11 @@ class Location_middleware extends React.Component{
       var path = []
       if (tracker_data){
           for (var i = 0; i<=tracker_data.length-1;i++){
-            var point=[ parseFloat(tracker_data[i]["Longitude"]), parseFloat(tracker_data[i]["Latitude"]) ]
-            path.push(point);
+            if( (tracker_data[i]["Longitude"]) &&  (tracker_data[i]["Latitude"]) ){
+              var point=[ parseFloat(tracker_data[i]["Longitude"]), parseFloat(tracker_data[i]["Latitude"]) ]
+              console.log(point)
+              path.push(point);
+            }
           }
           return(
             <div>
@@ -74,8 +72,9 @@ class Location_middleware extends React.Component{
       else{return(
       <div>
         {_.range(0, buoys_array.length, 1).map(value=>
-          <button className="button"  onClick={ ()=>{this.tracker_data(buoys_array[value]["name"]);} }>{buoys_array[value]["name"]}</button>
+          <button className="popup-button"  onClick={ ()=>{this.tracker_data(buoys_array[value]["name"]);} }>{buoys_array[value]["name"]}</button>
         )}
+      <h2>Our Buoys Bla bla bla</h2>
       </div>
     );}
 
@@ -87,13 +86,6 @@ class Location_middleware extends React.Component{
           <h2>Awaiting Response</h2>
         );
       }
-
-    /*else{
-      console.log("Render Issues!!!!!!!");
-      return(
-        <h2>Locations Tab</h2>
-      );
-    }*/
 
   }
 }

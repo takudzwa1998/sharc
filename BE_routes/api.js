@@ -1,4 +1,8 @@
-require('../BE_buoy_models/sample_buoy');
+require('../BE_buoy_models/dataset_4');
+require('../BE_buoy_models/dataset_3');
+require('../BE_buoy_models/dataset_2');
+
+
 const express = require('express');
 const router = new express.Router();
 var prependFile = require('prepend-file');
@@ -59,8 +63,8 @@ router.post('/save_buoy', (req, res)=>{
     useUnifiedTopology:true
   }, function(err, db) {
   if (err) throw err;
-    var mydb = db.db("demo_db");
-    mydb.collection("buoy_links").insertOne(link_name, function(err, res) {
+    var mydb = db.db("buoys_names");
+    mydb.collection("buoys_names").insertOne(link_name, function(err, res) {
       if (err) throw err;
     });
 });

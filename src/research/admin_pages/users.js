@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component, useState} from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -41,13 +41,7 @@ showUser(){
   render(){
     var users = this.state.user_data
     console.log("Users: "+users)
-    if (localStorage.getItem("token") != "SHMTAK004"){
-      return(
-        <h2>Unauthorised Page</h2>
-      );
-    }
-    else{
-      if (this.state.show){
+    if (this.state.show){
       var keys = Object.keys(users[1])
       return(
         <div>
@@ -81,7 +75,7 @@ showUser(){
         </div>
       );
     }
-      else{
+    else{
     return(
       <div>
         <h2>My Buoys Users</h2>
@@ -90,8 +84,6 @@ showUser(){
       </div>
     );
     }
-    }
-
   }
 }
 

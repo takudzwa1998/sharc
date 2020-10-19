@@ -6,11 +6,12 @@ import Line_graph from './line_graph.js';
 import P_graph from './p_graph.js';
 import WS_graph from './ws_graph.js';
 import { useHistory } from "react-router-dom";
+import { Route , withRouter} from 'react-router-dom';
 var buoys_array = []
 var curr_data = []
 var _ = require('underscore');
 
-class Stats extends React.Component {
+class Stats_admin extends React.Component {
 
   constructor(props){
     super(props);
@@ -54,7 +55,7 @@ class Stats extends React.Component {
       if (this.state.current_data){
         return(
           <div>
-          <button className="button" onClick={() => this.props.history.push("/")} >Back</button>
+          <button className="button" onClick={() => this.props.history.push("/home")} >Back</button>
           <Area_graph sect_data={this.state.current_data}/>
           <Line_graph sect_data={this.state.current_data}/>
           <P_graph sect_data={this.state.current_data}/>
@@ -65,7 +66,7 @@ class Stats extends React.Component {
       else{
         return (
           <div>
-          <h2>Our Statistics blah blah blah</h2>
+          <h2>Admin Stats</h2>
           {_.range(0, buoys_array.length, 1).map(value=>
             <button className="popup-button" onClick={() => this.take_data(buoys_array[value]["name"]) }>{buoys_array[value]["name"]}</button>
           )}
@@ -79,4 +80,4 @@ class Stats extends React.Component {
 
 }
 
-export default Stats;
+export default withRouter(Stats_admin);

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from "axios";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { connect,Provider } from 'react-redux';

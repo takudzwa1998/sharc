@@ -22,7 +22,7 @@ const options = [
 ];
 
 class Add_User extends React.Component{
-  
+
   constructor(props){
   super(props);
   this._onSelect = this._onSelect.bind(this)
@@ -72,6 +72,27 @@ submit=(event)=>{
      });;
 };
 
+delete=(event)=>{
+    event.preventDefault();
+
+    const load={
+      researcher_id:this.state.researcher_id
+    };
+
+    axios({
+      url:'/add_user/remove',
+      method:'POST',
+      data: load
+    })
+     .then((response)=>{
+       console.log(response.data);
+       this.resetInputFields();
+     })
+     .catch(()=>{
+       console.log("Error, user not removed");
+     });;
+};
+
 resetInputFields=()=>{
   this.setState({
     name:'',
@@ -89,6 +110,7 @@ handleCheckBoxChange=()=>{
   render(){
     const selected_Institution = typeof this.state.selected === 'string' ? this.state.selected : this.state.selected.label
     return(
+      <div>
       <Popup trigger={<button className="popup-button"> Add New User</button>}
       modal
       >
@@ -139,8 +161,28 @@ handleCheckBoxChange=()=>{
                 </div>
             </form>
       </Popup>
+
+      <Popup trigger={<button className="popup-button"> Remove User</button>}
+      modal
+      >
+            <form onSubmit={this.delete}>
+                <div className="form-input">
+                <MuiThemeProvider>
+                <TextField
+                  type="text"
+                  name="researcher_id"
+                  placeholder= "Researcher ID"
+                  value={this.state.researcher_id}
+                  onChange={this.stateChange}
+                />
+                </MuiThemeProvider>
+                <button >Remove</button>
+                </div>
+            </form>
+      </Popup>
+      </div>
     );
   }
 }
 
-export default Add_User
+export default Add_User;
