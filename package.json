@@ -5,9 +5,11 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@reduxjs/toolkit": "^1.4.0",
+    "@shelf/jest-mongodb": "^1.2.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/user-event": "^7.1.2",
     "animate.css": "^4.1.1",
+    "apollo-mocked-provider": "^4.0.1",
     "axios": "^0.20.0",
     "bcrypt": "^5.0.0",
     "bootstrap": "^4.5.2",
@@ -24,6 +26,7 @@
     "history": "^5.0.0",
     "install": "^0.13.0",
     "material-ui": "^0.20.2",
+    "mdbreact": "^4.27.0",
     "mongoose": "^5.10.4",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
@@ -41,7 +44,7 @@
     "react-redux": "^7.2.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^3.4.4",
     "react-sidebar": "^3.0.2",
     "react-tabs": "^3.1.1",
     "react-twitter-widgets": "^1.9.5",
@@ -52,6 +55,7 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "selenium-webdriver": "^4.0.0-alpha.7",
+    "simple-statistics": "^7.3.0",
     "split": "^1.0.1",
     "underscore": "^1.11.0",
     "victory": "^35.1.1"
@@ -83,9 +87,10 @@
   "main": "index.js",
   "devDependencies": {
     "@testing-library/react": "^9.5.0",
-    "jest-dom": "^4.0.0",
+    "geckodriver": "^1.20.0",
     "react-test-renderer": "^16.14.0",
-    "redux-devtools": "^3.7.0"
+    "redux-devtools": "^3.7.0",
+    "selenium-standalone": "^6.20.1"
   },
   "keywords": [],
   "author": "",

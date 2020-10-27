@@ -15,17 +15,6 @@ class Area_graph extends React.Component{
     }
   }
 
-  componentWillMount(){
-    axios.get('/fetch/stats')
-     .then( response=>
-       this.setState({rec_data:response.data})
-     )
-     .catch((error)=>{
-       console.log(error);
-     });;
-
-  }
-
   render(){
     var my_data = this.props.sect_data;
     if (my_data[1]){
@@ -107,7 +96,7 @@ class Area_graph extends React.Component{
       console.log("Error: Render Issues!" )
     }
 
-  return(
+    return(
     <h1>-</h1>
   );
 

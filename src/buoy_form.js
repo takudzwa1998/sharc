@@ -13,6 +13,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import Button from '@material-ui/core/Button';
+
 import './App.css';
 import axios from "axios";
 import TextField from 'material-ui/TextField';
@@ -23,6 +25,7 @@ import { store } from 'react-notifications-component';
 var _ = require('underscore');
 var buoys_array = []
 var col_data = []
+
 
 class Buoy_Form extends React.Component{
 
@@ -36,7 +39,7 @@ class Buoy_Form extends React.Component{
     }
   }
 
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     axios.get('/fetch/buoys')
      .then( response=>
        this.setState({number_of_buoys:response.data})
@@ -44,11 +47,6 @@ class Buoy_Form extends React.Component{
      .catch((error)=>{
        console.log(error);
      });;
-
-     axios.get('/fetch/latest_data')
-      .catch((error)=>{
-        console.log(error);
-      });;
 
 
   }
@@ -257,6 +255,7 @@ class Buoy_Form extends React.Component{
                           <TextField
                             type="text"
                             name="buoy_tag"
+                            data-testid="buoy_tag"
                             placeholder= "Bouy Name"
                             value={this.state.buoy_tag}
                             onChange={this.stateChange}
@@ -264,6 +263,7 @@ class Buoy_Form extends React.Component{
                           <TextField
                             type="text"
                             name="buoy_link"
+                            data-testid="buoy_link"
                             placeholder= "Rokblock Link"
                             value={this.state.rockblock_link}
                             onChange={this.stateChange}
@@ -271,6 +271,7 @@ class Buoy_Form extends React.Component{
                           <TextField
                             type="text"
                             name="param1"
+                            data-testid="param1"
                             placeholder= "Parameter One"
                             value={this.state.param1}
                             onChange={this.stateChange}
@@ -278,6 +279,7 @@ class Buoy_Form extends React.Component{
                           <TextField
                             type="text"
                             name="param2"
+                            data-testid="param2"
                             placeholder= "Parameter Two"
                             value={this.state.param2}
                             onChange={this.stateChange}
@@ -327,8 +329,8 @@ class Buoy_Form extends React.Component{
                       {_.range(0,  buoys_array.length, 1).map(value=>
                         <TabPanel>
                         <ReactNotifications />
-                        <button onClick={ ()=>{this.take_data(buoys_array[value]["name"]);} }>Download Data</button>
-                        <button onClick={()=>{this.view(buoys_array[value]["name"]);}}>View Data</button>
+                        <Button variant="contained" color="default" className="material-button" onClick={ ()=>{this.take_data(buoys_array[value]["name"]);} }>Download Data</Button>
+                        <Button variant="contained" color="default" className="material-button" onClick={()=>{this.view(buoys_array[value]["name"]);}}>View Data</Button>
                         </TabPanel>
                       )}
 
@@ -477,10 +479,10 @@ class Buoy_Form extends React.Component{
                   </TabList>
 
                     {_.range(0,  buoys_array.length, 1).map(value=>
-                      <TabPanel>
+                      <TabPanel style={{textAlign: 'center'}}>
                       <ReactNotifications />
-                      <button onClick={ ()=>{this.take_data(buoys_array[value]["name"]);} }>Download Data</button>
-                      <button onClick={()=>{this.view(buoys_array[value]["name"]);}}>View Data</button>
+                      <Button  variant="contained" color="default"  onClick={()=>{this.take_data(buoys_array[value]["name"]);} }>Download Data</Button>
+                      <Button  variant="contained" color="default" style={{textAlign: 'center'}} onClick={()=>{this.view(buoys_array[value]["name"]);}}>View Data</Button>
                       </TabPanel>
                     )}
 
@@ -508,8 +510,8 @@ class Buoy_Form extends React.Component{
                   {_.range(0,  buoys_array.length, 1).map(value=>
                     <TabPanel>
                     <ReactNotifications />
-                    <button onClick={ ()=>{this.take_data(buoys_array[value]["name"]);} }>Download Data</button>
-                    <button onClick={()=>{this.view(buoys_array[value]["name"]);}}>View Data</button>
+                    <Button variant="contained" color="default" className="material-button" onClick={ ()=>{this.take_data(buoys_array[value]["name"]);} }>Download Data</Button>
+                    <Button variant="contained" color="default" className="material-button" onClick={()=>{this.view(buoys_array[value]["name"]);}}>View Data</Button>
                     </TabPanel>
                   )}
 
@@ -550,7 +552,7 @@ class Buoy_Form extends React.Component{
         }
         else{
           return(
-          <div>
+          <div >
                 <Tabs>
                   <TabList>
                   {_.range(0, buoys_array.length, 1).map(value=>
@@ -562,8 +564,8 @@ class Buoy_Form extends React.Component{
                     {_.range(0,  buoys_array.length, 1).map(value=>
                       <TabPanel>
                       <ReactNotifications />
-                      <button onClick={ ()=>{this.take_data(buoys_array[value]["name"]);} }>Download Data</button>
-                      <button onClick={()=>{this.view(buoys_array[value]["name"]);}}>View Data</button>
+                      <Button variant="contained" color="primary" onClick={()=>{this.take_data(buoys_array[value]["name"]);} }>Download Data</Button>
+                      <Button variant="contained" color="primary" onClick={()=>{this.view(buoys_array[value]["name"]);}}>View Data</Button>
                       </TabPanel>
                     )}
 

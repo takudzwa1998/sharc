@@ -7,6 +7,7 @@ import Contacts from "./public_files/contacts.js";
 import Stats from "./public_files/stats.js";
 import Scale from "./public_files/scale.js";
 import sc from './images/sc.png';
+import Footer from './footer.js'
 import {
   BrowserRouter as Router,
   Switch,
@@ -37,6 +38,7 @@ class Welcome_page extends React.Component{
       <Route path="/stats" component={Stats} />
     </Switch>
     </Router>
+    <Footer/>
     </div>
   );
   }

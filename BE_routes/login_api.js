@@ -37,7 +37,6 @@ router.post('/login', (req, res)=>{
       db.close();
     });
   });
-
 });
 
 module.exports = router;

@@ -29,10 +29,10 @@ router.get('/stats', (req, res)=>{
     db.close();
   });
   });
-
 });
 
 router.post('/public_stats', (req, res)=>{
+
   MongoClient.connect(url,{
     useNewUrlParser:true,
     useUnifiedTopology:true
@@ -65,7 +65,6 @@ router.get('/all_users',(req, res)=>{
     db.close();
   });
   });
-
 });
 
 router.post('/col_data',(req, res)=>{
@@ -90,7 +89,6 @@ router.post('/col_data',(req, res)=>{
     db.close();
   });
   });
-
 });
 
 router.post('/view_data',(req, res)=>{
@@ -107,7 +105,6 @@ router.post('/view_data',(req, res)=>{
     db.close();
   });
   });
-
 });
 
 router.get('/buoys', (req, res)=>{
@@ -124,7 +121,6 @@ router.get('/buoys', (req, res)=>{
   });
 
   });
-
 });
 
 router.get('/elements', (req, res)=>{
@@ -147,7 +143,6 @@ router.get('/elements', (req, res)=>{
 });
 
   });
-
 });
 
 router.get('/latest_data', (req, res)=>{
@@ -165,7 +160,6 @@ router.get('/latest_data', (req, res)=>{
 });
 
 });
-
 });
 
 module.exports = router;

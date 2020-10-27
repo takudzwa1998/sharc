@@ -10,7 +10,7 @@ class Analytics extends React.Component{
   render(){
     return(
       <div>
-      <h2>My Buoys Analytics</h2>
+      <h2>Analytics</h2>
       <Extract_page/>
       <Stats_admin/>
       </div>

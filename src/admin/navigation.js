@@ -29,7 +29,7 @@ else{
       <Link to="#" className="menu-bars">
       <myIcons.FaBars onClick={isSidebar}/>
       </Link>
-      <button className="popup-button" onClick={signOut} href="#">
+      <button data-testid="logout-button" className="popup-button" onClick={signOut} href="#">
         Sign Out
       </button>
     </div>

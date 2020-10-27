@@ -51,9 +51,10 @@ app.use('/access', login_api);
 app.use('/fetch', fetch_api);
 app.use('/public_api', public_api);
 app.use(express.static(__dirname+'\\BE_routes\\buoy_data_files'))
-
+var date = new Date();
 const dest = 'BE_routes\\buoy_data_files\\';
 var file_name = ''
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb){
     cb(null, dest)
@@ -74,7 +75,6 @@ function add_to_database(collection, data){
     var mydb = db.db("demo_db");
     mydb.collection(collection).insertOne(data, function(err, res) {
       if (err) throw err;
-      console.log(data)
       db.close();
     });
 });
@@ -82,12 +82,12 @@ function add_to_database(collection, data){
 }
 
 app.post('/data_file_upload', (req, res)=>{
+
   let data_load=multer({storage: storage} ).single('data_file');
   data_load(req, res, function(err) {
     if (err){console.log(err);}
     const path = Path.join(__dirname+'\\BE_routes\\buoy_data_files\\'+file_name)
     const collection = file_name.slice(0, -4)
-    console.log("File name 1: "+collection)
     const results=[];
     fs.createReadStream(path)
     .pipe(csv())
@@ -95,15 +95,18 @@ app.post('/data_file_upload', (req, res)=>{
       results.push(row)
     })
     .on('end',()=>{
+      var init = Date.parse(new Date());
+      console.log("Time: "+init)
       for (var i=0;i<results.length;i++){
         add_to_database(collection, results[i])
       }
+      console.log("Time 2: "+(Date.parse(new Date())))
+      console.log("Time elapsed: "+ ( (Date.parse(new Date())) - init ) )
     });
 
+
   });
-
-
-  res.end()
+  res.end();
 })
 
 app.listen(PORT, console.log(`Server is starting at ${PORT}`))

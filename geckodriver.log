@@ -1,0 +1,22 @@
+C:\Users\takudzwa shumbamhini\OneDrive\Documents\FINAL_YEAR\2nd_Semester\EEE4022S\sharc\node_modules\geckodriver\geckodriver.exe: geckodriver 0.27.0 (7b8c4f32cdde 2020-07-28 18:16 +0000) 
+WebDriver implementation for Firefox
+
+USAGE:
+    geckodriver.exe [FLAGS] [OPTIONS]
+
+FLAGS:
+        --connect-existing    Connect to an existing Firefox instance
+    -h, --help                Prints this message
+        --jsdebugger          Attach browser toolbox debugger for Firefox
+    -v                        Log level verbosity (-v for debug and -vv for trace level)
+    -V, --version             Prints version and copying information
+
+OPTIONS:
+    -b, --binary <BINARY>           Path to the Firefox binary
+        --log <LEVEL>               Set Gecko log level [possible values: fatal, error, warn, info, config, debug,
+                                    trace]
+        --marionette-host <HOST>    Host to use to connect to Gecko [default: 127.0.0.1]
+        --marionette-port <PORT>    Port to use to connect to Gecko [default: system-allocated port]
+        --host <HOST>               Host IP to use for WebDriver server [default: 127.0.0.1]
+    -p, --port <PORT>               Port to use for WebDriver server [default: 4444]
+error: An attempt was made to access a socket in a way forbidden by its access permissions. (os error 10013)

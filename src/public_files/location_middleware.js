@@ -3,7 +3,13 @@ import '../App.css';
 import 'react-tabs/style/react-tabs.css';
 import 'react-notifications/lib/notifications.css';
 
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import buoys from '../images/buoys.jpg';
 import Location from "./location.js";
+import Box from '@material-ui/core/Box';
+
 import axios from "axios";
 var _ = require('underscore');
 var buoys_array = []
@@ -58,7 +64,6 @@ class Location_middleware extends React.Component{
           for (var i = 0; i<=tracker_data.length-1;i++){
             if( (tracker_data[i]["Longitude"]) &&  (tracker_data[i]["Latitude"]) ){
               var point=[ parseFloat(tracker_data[i]["Longitude"]), parseFloat(tracker_data[i]["Latitude"]) ]
-              console.log(point)
               path.push(point);
             }
           }
@@ -71,10 +76,36 @@ class Location_middleware extends React.Component{
 
       else{return(
       <div>
+      <Grid container spacing={3} className="grid">
+          <Grid item xs={6}>
+              <Paper className="paper">
+              The SCALE buoys are deployed at various locations in the Southern Ocean. The current and the ice aid in the navigation of the various buoys.
+              Each unit was designed with
+              <Box width = "90%" boxShadow={1} component="span" display="block" p={1} m={1}>
+                1.	Global Positioning System (GPS) sensors for positional data
+              </Box>
+              <Box width = "90%" boxShadow={1} component="span" display="block" p={1} m={1}>
+                2.	inertial measurement units (IMU)* for wave characteristic collection (wave height, wave period and power spectrum) and
+              </Box>
+              <Box width = "90%" boxShadow={1} component="span" display="block" p={1} m={1}>
+                3.	environmental sensors (temperature, humidity, pressure, wind speed and wind direction).
+              </Box>
+              </Paper>
+          </Grid>
+          <Grid item xs={4}>
+          <img  width={425} height={425} src={buoys}/>
+          </Grid>
+      </Grid>
+    <Grid container spacing={3} className="grid">
+      <Grid item xs={6}>
+      <Paper className="paper">
+      CLICK BELOW TO VIEW THE BUOY'S TRACKS IN THE SOUTHERN OCEAN
+      </Paper>
+      </Grid>
+    </Grid>
         {_.range(0, buoys_array.length, 1).map(value=>
           <button className="popup-button"  onClick={ ()=>{this.tracker_data(buoys_array[value]["name"]);} }>{buoys_array[value]["name"]}</button>
         )}
-      <h2>Our Buoys Bla bla bla</h2>
       </div>
     );}
 

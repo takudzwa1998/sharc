@@ -46,6 +46,7 @@ showUser(){
         <h2>Unauthorised Page</h2>
       );
     }
+    
     else{
       if (this.state.show){
       var keys = Object.keys(users[1])

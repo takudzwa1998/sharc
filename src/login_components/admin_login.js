@@ -51,11 +51,13 @@ render(){
     }
     return(
       <div className="Login">
-      <h2>Admin Login Page</h2>
-      <form onSubmit={this.submit} >
+      <h2 className="Login">Admin Login Page</h2>
+      <form onSubmit={this.submit} className="Login">
       <input
         type="text"
+        data-testid="rid"
         name="rid"
+        className="demo"
         placeholder= "Researcher ID"
         value={this.state.rid}
         onChange={this.stateChange}
@@ -63,11 +65,12 @@ render(){
       <input
         type="password"
         name="password"
+        data-testid="password"
         placeholder= "Password"
         value={this.state.password}
         onChange={this.stateChange}
       />
-      <button>Login</button>
+      <button data-testid="login-button">Login</button>
       </form>
       </div>
 

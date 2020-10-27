@@ -52,6 +52,8 @@ html, body, #root .App {
   padding: 10px 50px;
   display: inline-block;
   font: bold 14px Arial;
+  border-radius: 30px;
+  margin-left:10px;
 }
 
 .link-text{
@@ -100,4 +102,36 @@ ul li.active {
 .scale-header{
   text-align: left;
   padding: 20px;
+}
+
+
+.material-button{
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.Login{
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  padding-left: 250px;
+}
+
+.footer{
+  align-items: center;
+  justify-content: center;
+  display: inline-block;
+  background-color:#f6f6f6;
+}
+
+.grid{
+  align-items: center;
+  justify-content: center;
+  display: inline-block;
+  background-color:#ffffff;
+}
+
+.stats-button{
+  flex-grow: 2;
+  justify-content: space-between;
 }

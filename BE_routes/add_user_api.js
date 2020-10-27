@@ -52,6 +52,7 @@ router.post('/add', (req, res)=>{
     });
 });
   res.status(200).send(is_saved);
+  res.end();
 });
 
 router.post('/remove', (req, res)=>{
@@ -69,7 +70,7 @@ router.post('/remove', (req, res)=>{
       db.close();
     });
   });
-
+  res.end();
 });
 
 module.exports = router;

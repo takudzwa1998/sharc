@@ -16,9 +16,11 @@ var MongoClient  = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 var dwn=0;
 const csvFilePath='./BE_routes/Sample_buoy0.csv';
+var date = new Date();
 
 // function to donwload and save
 function download_Buoy_Data(collection, link){
+  var init = Date.parse(date);
   console.log("Downloadig data phase");
   const path = Path.join(__dirname,'buoy_data_files',collection+dwn+'.csv')
   dwn=dwn+1;
@@ -49,10 +51,11 @@ console.log("path: "+ path);
    .catch((error)=>{
      console.log(error);
    });;
+   console.log("Time elapsed: "+ ( (Date.parse(new Date())) - init ) )
 
 }
 
-//function to add to databases
+//function to add to databasess
 function add_to_database(collection, data){
 
   MongoClient.connect(url,{
@@ -61,9 +64,8 @@ function add_to_database(collection, data){
   }, function(err, db) {
   if (err) throw err;
     var mydb = db.db("demo_db");
-    mydb.collection("sample_buoy").insertOne(data, function(err, res) {
+    mydb.collection(collection).insertOne(data, function(err, res) {
       if (err) throw err;
-      console.log(data)
       db.close();
     });
 });
@@ -71,6 +73,7 @@ function add_to_database(collection, data){
 }
 
 router.post('/ext', (req, res)=>{
+
 console.log("Tag received: "+ req.body.tag)
 //1. Get all the rockblock links from the db
 MongoClient.connect(url,{
@@ -80,14 +83,14 @@ MongoClient.connect(url,{
 if (err) throw err;
 var mydatabase = db.db("buoys_names");
 var query = { buoy_tag: req.body.tag};
-mydatabase.collection("buoys_names").find({}, query).toArray(function(err, result) {
+mydatabase.collection("buoys_names").find({ buoy_tag: req.body.tag}).toArray(function(err, result) {
   if (err) throw err;
+    console.log("Result: "+result[0].buoy_tag)
     download_Buoy_Data(result[0].buoy_tag, result[0].buoy_link)
   db.close();
+
 });
 });
-
-
 });
 
 module.exports = router;

@@ -1,6 +1,11 @@
 import axios from "axios";
 import './App.css';
 import React, {Component} from 'react';
+
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+
 import Popup from 'reactjs-popup';
 import TextField from 'material-ui/TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -76,13 +81,14 @@ resetInputFields=()=>{
 render(){
   return(
     <div>
-    <h2>Upload Processed Data</h2>
+        <Box width = "50%" boxShadow={1} component="span" display="inline-block" p={1} m={1}>
+    <h2>Upload data to buoy</h2>
     <form target="_blank" action="/data_file_upload" method="POST" enctype="multipart/form-data">
-      <input className="popup-button" type="file" name="data_file" />
-      <input type="submit" name="btn_upload_profile_pic" value="Upload"/>
+      <input className="popup-button" type="file" name="data_file" data-testid="file_input"/>
+      <input type="submit" name="btn_upload_profile_pic" value="Upload" className="popup-button"/>
     </form>
-
-    <Popup trigger={<button className="popup-button">Extract Raw Data</button>}
+    <h2>OR</h2>
+    <Popup trigger={<button className="popup-button">Extract Raw Data from buoy</button>}
     modal
     >
     <ReactNotifications />
@@ -100,6 +106,7 @@ render(){
     </form>
 
     </Popup>
+        </Box>
     </div>
   );
 }
