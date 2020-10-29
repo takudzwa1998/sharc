@@ -3,6 +3,12 @@ import '../App.css';
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
+/**
+*Admin_Login - login page for researchers and administrators
+*@class Admin_Login -class
+*
+*/
+
 class Admin_Login extends React.Component{
 
 constructor(props){

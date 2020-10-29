@@ -22,6 +22,12 @@ const data = [
   {sourcePosition: [18.4696163, -33.9471633], targetPosition: [18.46980, -33.947300]}
 ];
 
+/**
+*Location - mapping page for the system
+*
+*@param {data} data - the GPS data to be processed
+*
+*/
 function Location({data}) {
   const layers = [
     new PathLayer({

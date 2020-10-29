@@ -4,6 +4,12 @@ import {ComposedChart, Area, Bar, XAxis, YAxis, Tooltip, Legend} from 'recharts'
 import axios from "axios";
 var _ = require('underscore');
 
+/**
+*Line_graph - Line graph for the Graph UI
+*@class Line_graph -class name 
+*
+*/
+
 class Line_graph extends React.Component{
 
   constructor(props){

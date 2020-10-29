@@ -1,5 +1,11 @@
 import React,{Component, useState} from 'react';
 
+/**
+*Landing_page - landing page
+*@class Landing_page -class name
+*
+*/
+
 class Landing_page extends React.Component{
 
 render(){

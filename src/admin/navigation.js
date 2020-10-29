@@ -8,6 +8,10 @@ import './navigation.css';
 import { withRouter } from "react-router";
 import Dashboard from "./dashboard.js";
 
+/**
+*Returns a navigation drawer UI
+*/
+
 function Navigation (){
 
   const [sidebar, setSidebar] = useState(false)

@@ -4,6 +4,18 @@ import { Redirect, Switch, Route, Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import Sidebar from "react-sidebar";
 
+/**
+*router component for Dashboard
+*@class Dashboard {
+  constructor() {
+    super(props);
+    this.state = {
+      islogout: false
+    };
+  }
+}
+*/
+
 class Dashboard extends React.Component{
   constructor(props) {
     super(props);

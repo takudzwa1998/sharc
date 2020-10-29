@@ -4,6 +4,11 @@ import {BarChart, Bar, Cell,LineChart, Line,ComposedChart, Area,
 import axios from "axios";
 var _ = require('underscore');
 
+/**
+*WS_graph - Line and area graph for the Graph UI
+*@class WS_graph - class name
+*/
+
 class WS_graph extends React.Component{
 
   constructor(props){

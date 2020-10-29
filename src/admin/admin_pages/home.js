@@ -20,6 +20,12 @@ import { shadows } from '@material-ui/system';
 import axios from "axios";
 var _ = require('underscore');
 
+/**
+*Home component for Admin, displays home Page
+*@class Home - class Name
+*
+*/
+
 class Home extends React.Component{
 
   constructor(props){
@@ -161,7 +167,7 @@ class Home extends React.Component{
 
               {_.range(0,  buoys_array.length, 1).map(value=>
                 <TabPanel>
-                <Button  variant="contained" color="primary" onClick={() => this.take_data(buoys_array[value]["name"]) }>STATISTICAL SUMMARY OF {buoys_array[value]["name"]}</Button >
+                <button className="popup-button" onClick={() => this.take_data(buoys_array[value]["name"]) }>STATISTICAL SUMMARY OF {buoys_array[value]["name"]}</button >
                     <div style={{alignItems: "center"}}>
                     <Box width = "40%" boxShadow={1} component="span" display="block" p={1} m={1}>
                       Mean {keys[value+3]}: {parseFloat(mean(vicortyDataSets[1])).toPrecision(4)} | Max {keys[value+3]}: {parseFloat(min(vicortyDataSets[1])).toPrecision(4)}| Min {keys[value+3]}: {parseFloat(max(vicortyDataSets[1])).toPrecision(4)}

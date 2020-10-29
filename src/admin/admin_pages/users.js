@@ -16,6 +16,11 @@ var _ = require('underscore')
 
 const useStyles = makeStyles({table: {minWidth: 650}});
 
+/**
+*Users Tab for the Admin
+*@class Users - name of class
+}
+*/
 class Users extends React.Component{
   constructor(props){
     super(props);
@@ -46,7 +51,7 @@ showUser(){
         <h2>Unauthorised Page</h2>
       );
     }
-    
+
     else{
       if (this.state.show){
       var keys = Object.keys(users[1])

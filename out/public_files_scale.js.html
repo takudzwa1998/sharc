@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: public_files/scale.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: public_files/scale.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import { Timeline } from 'react-twitter-widgets';
+import '../App.css';
+import board from '../images/board.jpg';
+import miz from '../images/miz.jpg';
+import buoys from '../images/buoys.jpg';
+import more_ice from '../images/more_ice.jpg';
+var date = new Date();
+
+/**
+*Scale - Landing page for the public user
+*@class Scale -class name
+*
+*/
+class Scale extends React.Component{
+
+  render(){
+    return(
+      &lt;div className="root">
+
+      &lt;h2 className="scale-header ">UCT SHARC Buoy: Data Visualisation for the Southern Ocean Environment&lt;/h2>
+      &lt;Grid container spacing={3} className="grid">
+            &lt;Grid item xs={6}>
+                &lt;Paper className="paper">
+
+                The distribution of sea ice in the Marginal Ice Zone (MIZ) in the Southern Ocean (SO) has a significant effect on global climate patterns,
+                but our understanding of this unique region suffers from a lack of Antarctic seasonal in situ measurement data, especially over the winter season.
+
+                A variety of interacting forces, including local weather and wave conditions,
+                strongly affect the formation and development of sea ice in the MIZ.
+                To better characterize sea ice development under the influence of wave dynamics and turbulent environmental conditions,
+                in situ measurements and observations are needed.
+                &lt;/Paper>
+            &lt;/Grid>
+
+            &lt;Grid item xs={4}>
+              &lt;Paper className="paper">
+                  &lt;Timeline
+                      dataSource={{
+                        sourceType: 'profile',
+                        screenName: 'SCALExperiment'
+                      }}
+                      options={{
+                        height: '400'
+                      }}
+                  />
+              &lt;/Paper>
+            &lt;/Grid>
+      &lt;/Grid>
+
+      &lt;Grid container spacing={3} className="grid">
+        &lt;Grid item xs={6}>
+          &lt;Paper className="paper">
+        The Department of Electrical Engineering (UCT), the Department of Oceanography (UCT) and the South African
+        Weather Service have developed a prototype ice-tethered instrument which can be deployed on ice floes the MIZ of the Southern Ocean1.
+        The prototype sensor buoy was specifically designed for the Antarctic region, to operate remotely under extreme environmental
+        conditions and provide real-time local data through an Iridium satellite link.
+          &lt;/Paper>
+        &lt;/Grid>
+        &lt;Grid item xs={4}>
+        &lt;img width={425} height={425} src={miz}/>
+        &lt;/Grid>
+      &lt;/Grid>
+
+      &lt;Grid container spacing={3} className="grid">
+        &lt;Grid item xs={6}>
+          &lt;Paper className="paper">
+        Each unit was designed with Global Positioning System (GPS) sensors for positional data,
+        inertial measurement units (IMU) for wave characteristic collection (wave height, wave period and power spectrum)
+        and environmental sensors (temperature, humidity, pressure, wind speed and wind direction).
+          &lt;/Paper>
+        &lt;/Grid>
+        &lt;Grid item xs={4}>
+        &lt;img  width={425} height={425} src={more_ice}/>
+        &lt;/Grid>
+      &lt;/Grid>
+
+      &lt;/div>
+    );
+  }
+}
+
+export default Scale;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Admin_Login.html">Admin_Login</a></li><li><a href="Analytics.html">Analytics</a></li><li><a href="Area_graph.html">Area_graph</a></li><li><a href="Buoys.html">Buoys</a></li><li><a href="Contacts.html">Contacts</a></li><li><a href="Dashboard.html">Dashboard</a></li><li><a href="Graphs.html">Graphs</a></li><li><a href="Home.html">Home</a></li><li><a href="Landing_page.html">Landing_page</a></li><li><a href="Line_graph.html">Line_graph</a></li><li><a href="Location_middleware.html">Location_middleware</a></li><li><a href="P_graph.html">P_graph</a></li><li><a href="Scale.html">Scale</a></li><li><a href="Stats.html">Stats</a></li><li><a href="Stats_admin.html">Stats_admin</a></li><li><a href="Users.html">Users</a></li><li><a href="WS_graph.html">WS_graph</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Location">Location</a></li><li><a href="global.html#Navigation">Navigation</a></li><li><a href="global.html#Navigation_data">Navigation_data</a></li><li><a href="global.html#ProtectedRoute">ProtectedRoute</a></li><li><a href="global.html#Routers">Routers</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Thu Oct 29 2020 15:53:36 GMT+0200 (South Africa Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: admin/admin_pages/users.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: admin/admin_pages/users.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+import Add_User from "../../add_user.js";
+import { withRouter } from "react-router";
+import axios from "axios";
+var _ = require('underscore')
+
+const useStyles = makeStyles({table: {minWidth: 650}});
+
+/**
+*Users Tab for the Admin
+*@class Users - name of class
+}
+*/
+class Users extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      user_data:[],
+      show: false
+    }
+    this.showUser=this.showUser.bind(this);
+  }
+
+//componentWillMount(){}
+
+showUser(){
+  axios.get('/fetch/all_users')
+   .then( response=>
+    this.setState({user_data:response.data, show: true})
+    )
+   .catch((error)=>{
+     console.log(error);
+   });;
+}
+
+  render(){
+    var users = this.state.user_data
+    console.log("Users: "+users)
+    if (localStorage.getItem("token") != "SHMTAK004"){
+      return(
+        &lt;h2>Unauthorised Page&lt;/h2>
+      );
+    }
+
+    else{
+      if (this.state.show){
+      var keys = Object.keys(users[1])
+      return(
+        &lt;div>
+          &lt;Add_User/>
+          &lt;TableContainer style={{ width: 1300}} component={Paper}>
+          &lt;Table style={{ width: 1300 }} aria-label="simple table">
+
+          &lt;TableHead>
+          &lt;TableRow>
+          {_.range(0, keys.length, 1).map( value =>
+            &lt;TableCell align="right">{keys[value]}&lt;/TableCell>
+          )}
+           &lt;/TableRow>
+          &lt;/TableHead>
+
+          &lt;TableBody>
+          {_.range(0, users.length, 1).map( value =>
+            &lt;TableRow>
+            &lt;TableCell align="right">{users[value]["_id"]}&lt;/TableCell>
+            &lt;TableCell align="right">{users[value]["name"]}&lt;/TableCell>
+            &lt;TableCell align="right">{users[value]["surname"]}&lt;/TableCell>
+            &lt;TableCell align="right">{users[value]["rid"]}&lt;/TableCell>
+            &lt;TableCell align="right">{users[value]["password"]}&lt;/TableCell>
+            &lt;TableCell align="right">{users[value]["institution"]}&lt;/TableCell>
+            &lt;/TableRow>
+          )}
+          &lt;/TableBody>
+
+          &lt;/Table>
+          &lt;/TableContainer>
+        &lt;/div>
+      );
+    }
+      else{
+    return(
+      &lt;div>
+        &lt;h2>My Buoys Users&lt;/h2>
+        &lt;Add_User/>
+        &lt;button onClick={this.showUser} className="popup-button">Show Users&lt;/button>
+      &lt;/div>
+    );
+    }
+    }
+
+  }
+}
+
+export default Users;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Admin_Login.html">Admin_Login</a></li><li><a href="Analytics.html">Analytics</a></li><li><a href="Area_graph.html">Area_graph</a></li><li><a href="Buoys.html">Buoys</a></li><li><a href="Contacts.html">Contacts</a></li><li><a href="Dashboard.html">Dashboard</a></li><li><a href="Graphs.html">Graphs</a></li><li><a href="Home.html">Home</a></li><li><a href="Landing_page.html">Landing_page</a></li><li><a href="Line_graph.html">Line_graph</a></li><li><a href="Location_middleware.html">Location_middleware</a></li><li><a href="P_graph.html">P_graph</a></li><li><a href="Scale.html">Scale</a></li><li><a href="Stats.html">Stats</a></li><li><a href="Stats_admin.html">Stats_admin</a></li><li><a href="Users.html">Users</a></li><li><a href="WS_graph.html">WS_graph</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Location">Location</a></li><li><a href="global.html#Navigation">Navigation</a></li><li><a href="global.html#Navigation_data">Navigation_data</a></li><li><a href="global.html#ProtectedRoute">ProtectedRoute</a></li><li><a href="global.html#Routers">Routers</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Thu Oct 29 2020 15:53:36 GMT+0200 (South Africa Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

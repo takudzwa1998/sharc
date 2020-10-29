@@ -5,6 +5,10 @@ import Graphs from '../../public_files/graphs.js';
 import Stats_admin from '../../public_files/stats_admin.js'
 import { useHistory } from "react-router-dom";
 
+/**
+* Analytics component for admin, to display buoy Analytics
+*@class Analytics - class name
+*/
 class Analytics extends React.Component{
 
   render(){

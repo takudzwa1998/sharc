@@ -19,6 +19,13 @@ const data = [
   {sourcePosition: [18.4696163, -33.9471633], targetPosition: [18.4739513, -33.953786]}
 ];
 
+/**
+*Location_middleware - Middleware for processing GPS data
+*and rendering UI
+*@class Location_middleware -class name
+*
+*/
+
 class Location_middleware extends React.Component{
 
   constructor(props){

@@ -4,6 +4,12 @@ import { Line, XAxis,ComposedChart,
 import axios from "axios";
 var _ = require('underscore');
 
+/**
+*P_graph - Line graph
+*@class P_graph -class
+*
+*/
+
 class P_graph extends React.Component{
 
   constructor(props){

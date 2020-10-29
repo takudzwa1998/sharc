@@ -10,13 +10,18 @@ import buoys from '../images/buoys.jpg';
 import more_ice from '../images/more_ice.jpg';
 var date = new Date();
 
+/**
+*Scale - Landing page for the public user
+*@class Scale -class name
+*
+*/
 class Scale extends React.Component{
 
   render(){
     return(
       <div className="root">
 
-      <h2 className="scale-header ">UCT SHARC Buoy: Data Visualisation for the Southern Ocean</h2>
+      <h2 className="scale-header ">UCT SHARC Buoy: Data Visualisation for the Southern Ocean Environment</h2>
       <Grid container spacing={3} className="grid">
             <Grid item xs={6}>
                 <Paper className="paper">

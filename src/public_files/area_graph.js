@@ -6,6 +6,12 @@ import {
 import axios from "axios";
 var _ = require('underscore');
 
+/**
+*Area_graph - Area graph for the UI
+*@class Area_graph -class name
+*
+*/
+
 class Area_graph extends React.Component{
 
   constructor(props){

@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import reducers from '../reducers/index.js';
 
+//persist file for redux storage
 const persistConfig = {
   key:'authType',
   storage: storage,

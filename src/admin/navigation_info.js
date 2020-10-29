@@ -5,6 +5,10 @@ import * as myIOIcons from "react-icons/io";
 import * as myFIIcons from "react-icons/fi";
 import * as mySIIcons from "react-icons/si";
 
+/**
+* Defines Admin Tabs
+*@returns [Object] Navigation_data - navigation data object
+*/
 
 export const Navigation_data=[
   {

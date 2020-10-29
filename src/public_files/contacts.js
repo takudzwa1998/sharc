@@ -1,5 +1,11 @@
 import React,{Component, useState} from 'react';
 
+/**
+*Contacts - Contacts Tab
+*@class Contacts -class name
+*
+*/
+
 class Contacts extends React.Component{
 
   render(){

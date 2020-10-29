@@ -7,6 +7,10 @@ import Home from './admin_pages/home.js';
 import Analytics from './admin_pages/analytics.js';
 import ProtectedRoute from "../login_components/ProtectedRoute";
 
+/**
+*Routes Description
+*/
+
 function Routers(){
   return(
     <Router>

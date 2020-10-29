@@ -3,6 +3,12 @@ import axios from "axios";
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 var _ = require('underscore')
 
+/**
+*Graphs - line graph for the UI
+*@class Graphs -class name
+*
+*/
+
 class Graphs extends React.Component{
 
 constructor(props){

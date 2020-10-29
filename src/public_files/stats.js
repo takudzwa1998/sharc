@@ -15,6 +15,13 @@ var buoys_array = []
 var curr_data = []
 var _ = require('underscore');
 
+/**
+*Stats - Statistics main page for the public
+*@class Stats - class name
+*
+*/
+
+
 class Stats extends React.Component {
 
   constructor(props){

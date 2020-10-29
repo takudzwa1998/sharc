@@ -11,6 +11,12 @@ var buoys_array = []
 var curr_data = []
 var _ = require('underscore');
 
+/**
+*Stats_admin - graph page for the admin and researchers
+*@class Stats_admin - class name
+*
+*/
+
 class Stats_admin extends React.Component {
 
   constructor(props){
