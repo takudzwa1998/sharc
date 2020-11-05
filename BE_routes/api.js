@@ -1,3 +1,9 @@
+//*****************************************************************************************************************************//
+//                API for adding and removing buoys, and sending email
+//All Mongo DB Database functions adapted from : w3schools.com {https://www.w3schools.com/nodejs/nodejs_mongodb_create_db.asp}
+//Nodemailer Email API Original code adapted from: w3schools.com {https://www.w3schools.com/nodejs/nodejs_email.asp}
+//Code modified by: Takudzwa Shumbamhini
+//*****************************************************************************************************************************//
 require('../BE_buoy_models/Stormer');
 
 require('../BE_buoy_models/Black_pearl');
@@ -10,12 +16,14 @@ var http = require('http');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+var nodemailer = require('nodemailer');
+
 var MongoClient  = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 //routes
 
 router.post('/save_buoy', (req, res)=>{
-  //make buoy file - WORKS!!
+  //make buoy file
   fs.appendFile('../sharc/BE_buoy_models/'+req.body.buoy_tag+'.js',
     "const "+req.body.buoy_tag+"mongoose"+" = require('mongoose');"+"\n"+
     "const "+req.body.buoy_tag+"Schema = "+req.body.buoy_tag+"mongoose.Schema;"+"\n"+"\n"+
@@ -33,7 +41,7 @@ router.post('/save_buoy', (req, res)=>{
       console.log(error);
     }
   });
-  //add declaration line to api.js = WORKS!!
+  //add declaration line to api.js
   prependFile('BE_routes/api.js', 'require(\''+'../BE_buoy_models/'+req.body.buoy_tag+'\');'+'\n')
   //add buoy link and buoy name on a seperate Collection
   const link_name ={
@@ -86,6 +94,34 @@ res.status(200).send("Buoy Deleted Nicely");
   else{
     console.log("Collection Not deleted");
   }
+  res.end();
+
+});
+
+router.post('/send_mail', (req, res)=>{
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: req.body.email,
+      pass: req.body.password
+    }
+  });
+
+  var mailOptions = {
+    from: req.body.email,
+    to: 'shmtak004@myuct.ac.za',
+    subject: req.body.subject,
+    text: req.body.message
+  };
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      res.send({"message":"Email Sent"});
+    }
+  });
+
+  res.send({"message":"Email Sent"});
   res.end();
 
 });

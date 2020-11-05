@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import buoys from '../images/buoys.jpg';
+import antarctic from '../images/antarctic.jpg';
 import Location from "./location.js";
 import Box from '@material-ui/core/Box';
 
@@ -83,6 +84,8 @@ class Location_middleware extends React.Component{
 
       else{return(
       <div>
+      <img width={825} height={825} src={antarctic}/>
+      <p>https://www.nationsonline.org/oneworld/map/antarctica_map.htm</p>
       <Grid container spacing={3} className="grid">
           <Grid item xs={6}>
               <Paper className="paper">
@@ -101,6 +104,7 @@ class Location_middleware extends React.Component{
           </Grid>
           <Grid item xs={4}>
           <img  width={425} height={425} src={buoys}/>
+          <Paper className="paper">Source: https://twitter.com/SCALExperiment/</Paper>
           </Grid>
       </Grid>
     <Grid container spacing={3} className="grid">
@@ -126,6 +130,7 @@ class Location_middleware extends React.Component{
       }
 
   }
+  
 }
 
 export default Location_middleware;

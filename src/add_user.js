@@ -1,3 +1,11 @@
+//****************************************************************************************************************************//
+//                Add User Ui Page
+//All Material UI code adapted from : https://material-ui.com/
+//Lines 41, 53-55, 57-60, 62-86, 109-117, adapted from  Esterling Accime, github link: {https://github.com/accimeesterlin/mernapp_youtube}
+//ReactNotifications adapted from npm react-notifications-component, github link{https://github.com/teodosii/react-notifications-component}
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 import React, {Component} from 'react';
 import axios from "axios";
 import Dropdown_Menu from './dropdown_menu.js';
@@ -21,13 +29,19 @@ const options = [
   'University of the Western Cape'
 ];
 
+/**
+*Add_User - UI page for adding users
+*@class Add_User -class name
+*
+*/
+
 class Add_User extends React.Component{
 
-  constructor(props){
+constructor(props){
   super(props);
   this._onSelect = this._onSelect.bind(this)
 }
-  state={
+state={
     name:'',
     surname:'',
     researcher_id:'',

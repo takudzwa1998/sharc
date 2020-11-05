@@ -1,3 +1,10 @@
+/*//****************************************************************************************************************************//
+/*//                Navigation UI
+//Sidebar Mechanism: Link - https://github.com/briancodex/react-sidebar-v1
+//Token Mechanism by: Sigit Prasetya Nugroho, https://seegatesite.com/implement-login-page-and-protected-route-reactjs/
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 import React,{useState} from 'react';
 import * as myIcons from "react-icons/fa";
 import * as myAIIcons from "react-icons/ai";

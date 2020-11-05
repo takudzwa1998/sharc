@@ -1,5 +1,12 @@
-import React from 'react';
+//****************************************************************************************************************************//
+//                Add Buoy Form UI
+//All Material UI code adapted from : https://material-ui.com/
+//Lines 76-80, 208-218, adapted from  Esterling Accime, github link: {https://github.com/accimeesterlin/mernapp_youtube}
+//ReactNotifications adapted from npm react-notifications-component, github link{https://github.com/teodosii/react-notifications-component}
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
 
+import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import 'react-notifications/lib/notifications.css';
@@ -26,6 +33,11 @@ var _ = require('underscore');
 var buoys_array = []
 var col_data = []
 
+/**
+*Buoy_Form - form for buoy addition
+*@class Buoy_Form -class name
+*
+*/
 
 class Buoy_Form extends React.Component{
 
@@ -191,7 +203,6 @@ class Buoy_Form extends React.Component{
      .catch(()=>{
        console.log("Error, Buoy not deleted");
      });;
-
 
   };
 
@@ -590,6 +601,5 @@ class Buoy_Form extends React.Component{
   }
 
 }
-
 
 export default Buoy_Form;

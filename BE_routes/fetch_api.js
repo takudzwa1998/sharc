@@ -1,3 +1,10 @@
+//****************************************************************************************************************************//
+//                API for Extracting Data from link
+//All Mongo DB Database functions adapted from : w3schools.com {https://www.w3schools.com/nodejs/nodejs_mongodb_create_db.asp}
+//fastcsv function for making .csv files adapted from: https://c2fo.io/ {https://c2fo.io/fast-csv/docs/introduction/example}
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 const express = require('express');
 const router = new express.Router();
 var prependFile = require('prepend-file');
@@ -135,11 +142,7 @@ router.get('/elements', (req, res)=>{
   var mydatabase = db.db("demo_db");
   mydatabase.listCollections().toArray(function (err, collection){
   collection_name.push(collection)
-  //console.log("Collections----: "+collection_name);
-
   db.close();
-  console.log("Collections----: "+collection_name)
-
 });
 
   });

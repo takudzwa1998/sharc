@@ -10,6 +10,12 @@ import ProtectedRoute from "./login_components/ProtectedRoute";
 import Routers from "./admin/routers.js";
 import Welcome_page from "./welcome_page.js";
 
+/**
+*App - main application component
+*@class App -class name
+*
+*/
+
 class App extends React.Component{
 
   render(){
@@ -32,7 +38,6 @@ class App extends React.Component{
       </div>
     );
   }
-
 
 }
 

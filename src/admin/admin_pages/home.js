@@ -117,13 +117,6 @@ class Home extends React.Component{
 
           }
       }
-
-      console.log("1: "+vicortyDataSets[1]);
-      console.log("2: "+vicortyDataSets[2]);
-      console.log("3: "+vicortyDataSets[3]);
-      console.log("4: "+vicortyDataSets[4]);
-      console.log("5: "+vicortyDataSets[5]);
-
         return(
           <div>
           <h2 data-testid="home" className="header">Home</h2>

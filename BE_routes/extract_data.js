@@ -1,21 +1,23 @@
+//****************************************************************************************************************************//
+//                API for Extracting Data from link
+//All Mongo DB Database functions adapted from : w3schools.com {https://www.w3schools.com/nodejs/nodejs_mongodb_create_db.asp}
+//ReadStream code functions adapted from: https://dev.to/ {https://dev.to/isalevine/parsing-csv-files-in-node-js-with-fs-createreadstream-and-csv-parser-koi}
+//bcrypt encryption code functionality adapted from: https://www.npmjs.com/package/bcrypt
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 const express = require('express');
 const router = new express.Router();
 var prependFile = require('prepend-file');
 var fs = require('fs');
-var http = require('http');
 const mongoose = require('mongoose');
 const axios = require('axios');
-const csvtojson =require("csvtojson");
-//var csv = require('csv-sstream');
-var request = require('request');
 const Path = require('path');
 var csv = require("csv-parser");
-var split=require("split");
 var es = require('event-stream')
 var MongoClient  = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 var dwn=0;
-const csvFilePath='./BE_routes/Sample_buoy0.csv';
 var date = new Date();
 
 // function to donwload and save

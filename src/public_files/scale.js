@@ -8,6 +8,9 @@ import board from '../images/board.jpg';
 import miz from '../images/miz.jpg';
 import buoys from '../images/buoys.jpg';
 import more_ice from '../images/more_ice.jpg';
+import partners from '../images/partners.PNG';
+import partners_two from '../images/partners_two.PNG';
+
 var date = new Date();
 
 /**
@@ -62,6 +65,7 @@ class Scale extends React.Component{
         </Grid>
         <Grid item xs={4}>
         <img width={425} height={425} src={miz}/>
+        <Paper className="paper">Southern Ice. Source: https://unsplash.com/</Paper>
         </Grid>
       </Grid>
 
@@ -75,8 +79,12 @@ class Scale extends React.Component{
         </Grid>
         <Grid item xs={4}>
         <img  width={425} height={425} src={more_ice}/>
+        <Paper className="paper">Source: https://twitter.com/SCALExperiment/</Paper>
         </Grid>
       </Grid>
+
+      <img src={partners}/>
+      <img src={partners_two}/>
 
       </div>
     );

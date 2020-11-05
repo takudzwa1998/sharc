@@ -1,3 +1,9 @@
+//****************************************************************************************************************************//
+//                Composed grph UI
+//Graphing code derived from: https://recharts.org/en-US/ , {https://recharts.org/en-US/api/ComposedChart}
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 import React from 'react';
 import {BarChart, Bar, Cell,LineChart, Line,ComposedChart, Area,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';

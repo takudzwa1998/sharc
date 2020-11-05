@@ -1,12 +1,17 @@
-import React from 'react';
+//****************************************************************************************************************************//
+//                Composed grph UI
+//Graphing code derived from: https://recharts.org/en-US/ , {https://recharts.org/en-US/api/ComposedChart}
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
 
+import React from 'react';
 import {ComposedChart, Area, Bar, XAxis, YAxis, Tooltip, Legend} from 'recharts';
 import axios from "axios";
 var _ = require('underscore');
 
 /**
 *Line_graph - Line graph for the Graph UI
-*@class Line_graph -class name 
+*@class Line_graph -class name
 *
 */
 

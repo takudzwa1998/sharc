@@ -1,3 +1,10 @@
+//****************************************************************************************************************************//
+//                API for adding user_creds
+//All Mongo DB Database functions adapted from : w3schools.com {https://www.w3schools.com/nodejs/nodejs_mongodb_create_db.asp}
+//bcrypt encryption code functionality adapted from: https://www.npmjs.com/package/bcrypt
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 const express = require('express');
 const router = new express.Router();
 var prependFile = require('prepend-file');

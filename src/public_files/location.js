@@ -1,3 +1,9 @@
+//****************************************************************************************************************************//
+//                Maps
+//Graphing code derived from: https://vis.gl/ , {https://deck.gl/docs/api-reference/layers/path-layer}
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 import React from 'react';
 import { useHistory } from "react-router-dom";
 import DeckGL from '@deck.gl/react';

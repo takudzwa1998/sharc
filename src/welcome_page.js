@@ -16,6 +16,12 @@ import {
 } from "react-router-dom";
 var start = Date.now();
 
+/**
+*Welcome_page - welcom page for public
+*@class Welcome_page -class name
+*
+*/
+
 class Welcome_page extends React.Component{
 
   render(){

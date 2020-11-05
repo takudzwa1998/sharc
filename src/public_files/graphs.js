@@ -1,3 +1,9 @@
+//****************************************************************************************************************************//
+//                Protected Route
+//Graphing code derived from: https://recharts.org/en-US/ , {https://recharts.org/en-US/api/LineChart}
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 import React from 'react';
 import axios from "axios";
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';

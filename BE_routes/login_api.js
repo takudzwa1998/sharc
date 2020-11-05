@@ -1,3 +1,9 @@
+//****************************************************************************************************************************//
+//                API for Logging in
+//All Mongo DB Database functions adapted from : w3schools.com {https://www.w3schools.com/nodejs/nodejs_mongodb_create_db.asp}
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 const express = require('express');
 const router = new express.Router();
 var prependFile = require('prepend-file');

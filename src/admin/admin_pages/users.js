@@ -1,3 +1,10 @@
+/*//****************************************************************************************************************************//
+/*//                Admin Users Page UI
+//All Material UI code adapted from : https://material-ui.com/
+//Token Mechanism by: Sigit Prasetya Nugroho, https://seegatesite.com/implement-login-page-and-protected-route-reactjs/
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';

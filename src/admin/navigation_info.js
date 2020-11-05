@@ -1,3 +1,9 @@
+//****************************************************************************************************************************//
+//                Navigation Data Page
+//Author: Link - https://github.com/briancodex/react-sidebar-v1
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 import React from 'react';
 import * as myIcons from "react-icons/fa";
 import * as myAIIcons from "react-icons/ai";

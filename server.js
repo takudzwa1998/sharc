@@ -1,4 +1,8 @@
-//server.js file
+//****************************************************************************************************************************//
+//                Server file
+//Code adapted from  Esterling Accime, github link: {https://github.com/accimeesterlin/mernapp_youtube}
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
 
 //These are thr packages needed for our web application
 const express = require('express');

@@ -1,3 +1,9 @@
+//****************************************************************************************************************************//
+//                Dashboard Page
+//Signout token code[lines 32-37] by: Sigit Prasetya Nugroho, https://seegatesite.com/implement-login-page-and-protected-route-reactjs/
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 import React, {Component} from 'react';
 import axios from "axios";
 import { Redirect, Switch, Route, Link } from "react-router-dom";
@@ -23,6 +29,7 @@ class Dashboard extends React.Component{
       islogout: false
     };
 }
+
   signOut = () => {
     localStorage.removeItem("token");
     this.setState({

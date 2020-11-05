@@ -1,3 +1,11 @@
+//****************************************************************************************************************************//
+//                Extract UI Page
+//All Material UI code adapted from : https://material-ui.com/
+//Lines 42-45, 81-86, adapted from  Esterling Accime, github link: {https://github.com/accimeesterlin/mernapp_youtube}
+//ReactNotifications{Lines 61-70}, adapted from npm react-notifications-component, github link{https://github.com/teodosii/react-notifications-component}
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 import axios from "axios";
 import './App.css';
 import React, {Component} from 'react';
@@ -13,9 +21,13 @@ import ReactNotifications from 'react-notifications-component';
 import { store } from 'react-notifications-component';
 
 const csvtojson =require("csvtojson");
-const csvFilePath='../SB_03.csv';
 var inc=0;
 
+/**
+*Extract_page - page for raw data extraction
+*@class Extract_page -class name
+*
+*/
 
 class Extract_page extends React.Component{
 
@@ -66,11 +78,6 @@ event.preventDefault();
 
 }
 
-stateChange=({target})=>{
-  const {name, value}=target;
-  this.setState({[name]: value});
-};
-
 resetInputFields=()=>{
   this.setState({
     buoy_tag:'',
@@ -85,7 +92,7 @@ render(){
     <h2>Upload data to buoy</h2>
     <form target="_blank" action="/data_file_upload" method="POST" enctype="multipart/form-data">
       <input className="popup-button" type="file" name="data_file" data-testid="file_input"/>
-      <input type="submit" name="btn_upload_profile_pic" value="Upload" className="popup-button"/>
+      <input type="submit" name="btn_upload_csv_file" value="Upload" className="popup-button"/>
     </form>
     <h2>OR</h2>
     <Popup trigger={<button className="popup-button">Extract Raw Data from buoy</button>}

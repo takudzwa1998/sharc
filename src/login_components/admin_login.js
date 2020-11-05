@@ -1,3 +1,9 @@
+//****************************************************************************************************************************//
+//                Navigation UI
+//Token Mechanism by: Sigit Prasetya Nugroho, https://seegatesite.com/implement-login-page-and-protected-route-reactjs/
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 import React from 'react';
 import '../App.css';
 import axios from "axios";

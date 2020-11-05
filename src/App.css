@@ -124,6 +124,10 @@ ul li.active {
   background-color:#f6f6f6;
 }
 
+.footer-color{
+  background-color:#ffffff;
+}
+
 .grid{
   align-items: center;
   justify-content: center;

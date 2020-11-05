@@ -1,3 +1,9 @@
+//****************************************************************************************************************************//
+//                Public API for retrieving coordinates from database
+//All Mongo DB Database functions adapted from : w3schools.com {https://www.w3schools.com/nodejs/nodejs_mongodb_create_db.asp}
+//Code modified by: Takudzwa Shumbamhini
+//****************************************************************************************************************************//
+
 const express = require('express');
 const router = new express.Router();
 var prependFile = require('prepend-file');
@@ -20,7 +26,6 @@ router.post('/tracker_data', (req, res)=>{
   var mydatabase = db.db("demo_db");
   mydatabase.collection(req.body.name).find({}, {projection: {_id: 0, Latitude: 1,Longitude: 1}}).toArray(function(err, result) {
     if (err) throw err;
-    //console.log("Lat: "+ result[0]["Latitude"]+" & Lng "+Object.keys(result[0]))
     var keys = Object.keys(result)
     res.send(result)
     db.close();
