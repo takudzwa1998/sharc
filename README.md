@@ -2,69 +2,29 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## UCT SHARC Buoy: Data Management Back End
 
-### Prject Description
+### Problem Statement
 
 This research project is centered around managing the processed data from the deployed buoys in the Antarctic MIZ and designing a web-based data management and display tool for the SHARC Buoy System. The data management system must display the data in a user friendly, interactive, and informative manner. The system also must be stratified across three sets of users which are public, researchers and administrators. Additionally, the web tool must add more buoys to the system to handle the new processed data from the deployed buoys.
 
-### `yarn start`
+### Project Description
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The distribution of sea ice in the Marginal Ice Zone (MIZ) in the Southern Ocean (SO) has a significant effect on global climate patterns, but our understanding of this unique region suffers from a lack of Antarctic seasonal in situ measurement data, especially over the winter season. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+A variety of interacting forces, including local weather and wave conditions, strongly affect the formation and development of sea ice in the MIZ. To better characterize sea ice development under the influence of wave dynamics and turbulent environmental conditions, in situ measurements and observations are needed.
 
-### `yarn test`
+The Department of Electrical Engineering (UCT), the Department of Oceanography (UCT) and the South African Weather Service have developed a prototype ice-tethered instrument which can be deployed on ice floes the MIZ of the Southern Ocean1. The prototype sensor buoy was specifically designed for the Antarctic region, to operate remotely under extreme environmental conditions and provide real-time local data through an Iridium satellite link.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Each unit was designed with Global Positioning System (GPS) sensors for positional data, inertial measurement units (IMU) for wave characteristic collection (wave height, wave period and power spectrum) and environmental sensors (temperature, humidity, pressure, wind speed and wind direction). 
 
-### `yarn build`
+Three basic units (GPS and temperature only) were deployed during the 2019SCALE Winter SA Agulhas II scientific cruise from the SA Agulhas II to investigate survivability under real-world conditions. From these tests, improvements to the design have been made and several key areas for further improvement of the platform have been identified.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The prototype sensor buoy was specifically designed for the Antarctic region, to operate remotely under extreme environmental conditions and provide real-time local data through an Iridium satellite link.
+Each unit was designed with 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+1.	Global Positioning System (GPS) sensors for positional data, 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2.	inertial measurement units (IMU)* for wave characteristic collection (wave height, wave period and power spectrum) and 
 
-### `yarn eject`
+3.	environmental sensors (temperature, humidity, pressure, wind speed and wind direction). 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Three basic units (GPS and temperature only) were deployed during the 2019SCALE Winter SA Agulhas II scientific cruise from the SA Agulhas II to investigate survivability under real-world conditions.
