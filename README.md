@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## UCT SHARC Buoy: Data Management Back End
 
-In the project directory, you can run:
+### Prject Description
 
 ### `yarn start`
 
