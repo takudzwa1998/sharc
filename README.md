@@ -2,6 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## UCT SHARC Buoy: Data Management Back End
 
+### File Structure
+
+This is where the file structure is at
+
 ### Problem Statement
 
 This research project is centered around managing the processed data from the deployed buoys in the Antarctic MIZ and designing a web-based data management and display tool for the SHARC Buoy System. The data management system must display the data in a user friendly, interactive, and informative manner. The system also must be stratified across three sets of users which are public, researchers and administrators. Additionally, the web tool must add more buoys to the system to handle the new processed data from the deployed buoys.
