@@ -1,16 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## UCT SHARC Buoy: Data Management Back End
+# UCT SHARC Buoy: Data Management Back End
 
-### File Structure
+## File Structure
 
 This is where the file structure is at
 
-### Problem Statement
+## Problem Statement
 
 This research project is centered around managing the processed data from the deployed buoys in the Antarctic MIZ and designing a web-based data management and display tool for the SHARC Buoy System. The data management system must display the data in a user friendly, interactive, and informative manner. The system also must be stratified across three sets of users which are public, researchers and administrators. Additionally, the web tool must add more buoys to the system to handle the new processed data from the deployed buoys.
 
-### Project Description
+## Project Description
 
 The distribution of sea ice in the Marginal Ice Zone (MIZ) in the Southern Ocean (SO) has a significant effect on global climate patterns, but our understanding of this unique region suffers from a lack of Antarctic seasonal in situ measurement data, especially over the winter season. 
 
