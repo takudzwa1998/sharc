@@ -4,7 +4,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## File Structure
 
-This is where the file structure is at
+BE_buoy_models - This is where the database definitions for the respective buoys are located.
+
+BE_routes - All API files are located in here, along with the extracted files.
+
+out - Code Documentation (only in HTML, cannot be interpreted in Github).
+
+src - Front-end code and test code.
+
+server.js - server file.
 
 ## Problem Statement
 
