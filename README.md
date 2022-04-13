@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+My 2020 Final Year Electrical & Computer Engineering Research Project
+
+
 # UCT SHARC Buoy: Data Management Back End
 
 ## Repo
